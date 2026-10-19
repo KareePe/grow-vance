@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Caveat:wght@600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#f5f7fb;font-family:'IBM Plex Sans Thai',sans-serif;color:#0b1a3d;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#1f5eff;text-decoration:none}a:hover{color:#0f3fc2}h1,h2,h3,p{margin:0}</style>
+</helmet>
+<div style="min-height:100vh">
+
+<!-- NAV + HERO -->
+<div style="background:linear-gradient(115deg,#06122f 0%,#0a1f55 55%,#123a9c 100%);color:#fff;position:relative;overflow:hidden">
+  <header style="max-width:1240px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;z-index:2">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:44px;height:44px;border-radius:50%;background:conic-gradient(#1f5eff,#5cc8ff,#fff,#1f5eff);display:grid;place-items:center"><div style="width:30px;height:30px;border-radius:50%;background:#0a1f55;display:grid;place-items:center;font:800 16px Prompt">G</div></div>
+      <div><div style="font:700 24px/1 Prompt;letter-spacing:.5px">GROW<span style="color:#5cb4ff">VANCE</span></div><div style="font-size:10px;opacity:.75;margin-top:3px">More Than Marketing. A Partner in Growth.</div></div>
+    </div>
+    <nav style="display:flex;gap:32px;font:500 14px Prompt;flex-wrap:wrap">
+      <a href="#" style="color:#fff;border-bottom:2px solid #5cb4ff;padding-bottom:4px">หน้าแรก</a>
+      <a href="#services" style="color:rgba(255,255,255,.85)">บริการของเรา</a>
+      <a href="#work" style="color:rgba(255,255,255,.85)">ผลงานของเรา</a>
+      <a href="#why" style="color:rgba(255,255,255,.85)">เกี่ยวกับเรา</a>
+      <a href="#" style="color:rgba(255,255,255,.85)">บทความ</a>
+      <a href="#contact" style="color:rgba(255,255,255,.85)">ติดต่อเรา</a>
+    </nav>
+    <a href="#contact" style="display:flex;align-items:center;gap:10px;background:#1f5eff;color:#fff;font:600 14px Prompt;padding:12px 26px;border-radius:999px;box-shadow:0 8px 24px rgba(31,94,255,.45)" style-hover="background:#3a72ff">ปรึกษาฟรี <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+  </header>
+  <section style="max-width:1240px;margin:0 auto;padding:40px 32px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:48px;align-items:center;position:relative;z-index:2">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="font:500 15px Prompt;color:#7cc4ff">Digital Marketing Agency</div>
+      <h1 style="font:700 clamp(36px,4.6vw,56px)/1.18 Prompt;text-wrap:balance">ครบทุกกลยุทธ์<br><span style="color:#4a9bff">เชื่อมทุกช่องทาง</span><br>เติบโตอย่างมีระบบ</h1>
+      <p style="font-size:16px;line-height:1.75;color:rgba(255,255,255,.85);max-width:520px">เราคือพาร์ตเนอร์ด้านการตลาดดิจิทัลครบวงจร ที่ช่วยให้ธุรกิจของคุณเข้าถึงกลุ่มเป้าหมาย สร้างการรับรู้ และเพิ่มยอดขายอย่างยั่งยืน ด้วยกลยุทธ์ที่ชัดเจน ข้อมูลจริง และทีมผู้เชี่ยวชาญ</p>
+      <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:8px">
+        <a href="#contact" style="display:flex;align-items:center;gap:10px;background:#1f5eff;color:#fff;font:600 15px Prompt;padding:16px 30px;border-radius:999px;box-shadow:0 10px 30px rgba(31,94,255,.5)" style-hover="background:#3a72ff">ปรึกษาฟรี ไม่มีค่าใช้จ่าย <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+        <a href="#" style="display:flex;align-items:center;gap:14px;color:#fff">
+          <span style="width:52px;height:52px;border-radius:50%;border:2px solid #fff;display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M7 4l13 8-13 8z"></path></svg></span>
+          <span style="font-size:13px;line-height:1.5">ดูวิดีโอแนะนำบริษัท<br><span style="opacity:.7">1.30 นาที</span></span>
+        </a>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div style="aspect-ratio:4/3;border-radius:20px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 10px,rgba(255,255,255,.02) 10px 20px);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;font:12px 'JetBrains Mono',monospace;color:rgba(255,255,255,.6)">hero photo — laptop with analytics dashboard, city backdrop</div>
+      <div style="position:absolute;left:-24px;bottom:36px;background:#fff;color:#0b1a3d;border-radius:14px;padding:14px 18px;box-shadow:0 20px 40px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:2px">
+        <span style="font-size:11px;color:#5a6788">Website Traffic</span>
+        <span style="font:700 26px Prompt;color:#1f5eff">+156%</span>
+      </div>
+      <div style="position:absolute;right:8px;top:-16px;font:600 28px/1.05 Caveat;color:#fff;transform:rotate(-8deg);text-align:right">Strategy<br>Creative<br>Technology<br>Results</div>
+    </div>
+  </section>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="background:#fff;padding:72px 32px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;gap:40px;align-items:flex-end;flex-wrap:wrap">
+        <div><div style="font:600 14px Prompt;color:#1f5eff;margin-bottom:6px">Our Services</div><h2 style="font:700 30px/1.25 Prompt">บริการการตลาดดิจิทัลครบวงจร</h2></div>
+        <p style="font-size:14px;line-height:1.7;color:#5a6788;max-width:380px">เราผสานกลยุทธ์ การสร้างสรรค์คอนเทนต์ และเทคโนโลยีเข้าด้วยกัน เพื่อให้ทุกการตลาดของคุณทำงานได้อย่างมีประสิทธิภาพ</p>
+      </div>
+      <a href="#" style="font:600 14px Prompt;display:flex;gap:8px;align-items:center">ดูบริการทั้งหมด →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <div style="padding:30px 26px;border-radius:16px;background:#fff;border:1px solid #e6ebf5;box-shadow:0 10px 30px rgba(11,26,61,.06);display:flex;flex-direction:column;gap:14px;transition:transform .2s" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(31,94,255,.14)">
+          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3b82ff,#1442c9);color:#fff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(31,94,255,.35)">{{ s.icon }}</div>
+          <h3 style="font:600 18px Prompt">{{ s.title }}</h3>
+          <div style="font-size:13px;line-height:1.7;color:#5a6788">{{ s.tags }}</div>
+          <p style="font-size:14px;line-height:1.7;color:#2a3757">{{ s.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background:linear-gradient(100deg,#06122f 0%,#0a1f55 60%,#16409e 100%);color:#fff;padding:64px 32px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="font:700 26px Prompt">ทำไมต้อง</div>
+      <div style="font:800 48px/1 Prompt;background:linear-gradient(90deg,#3b82ff,#7cd0ff);-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:-8px">GROWVANCE</div>
+      <p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.85)">เราไม่ใช่แค่เอเจนซีการตลาด แต่คือพาร์ตเนอร์ที่จริงจังกับการเติบโตของธุรกิจคุณ</p>
+      <a href="#" style="align-self:flex-start;color:#fff;border:1.5px solid rgba(255,255,255,.7);border-radius:999px;padding:9px 24px;font:500 14px Prompt" style-hover="background:rgba(255,255,255,.1)">เกี่ยวกับเรา →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0">
+      <sc-for list="{{ why }}" as="w" hint-placeholder-count="4">
+        <div style="padding:12px 20px;border-left:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+          <div style="color:#fff;height:44px;display:grid;place-items:center">{{ w.icon }}</div>
+          <div style="font:600 15px Prompt">{{ w.title }}</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.75)">{{ w.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" style="background:#fff;padding:72px 32px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font:600 14px Prompt;color:#1f5eff">ผลงานของเรา</div>
+      <h2 style="font:700 28px/1.3 Prompt">ตัวอย่างผลลัพธ์จากธุรกิจจริง</h2>
+      <p style="font-size:14px;line-height:1.7;color:#5a6788">เรามีประสบการณ์ดูแลธุรกิจหลากหลายประเภท ด้วยกลยุทธ์ที่เหมาะสมกับแต่ละอุตสาหกรรม</p>
+      <a href="#" style="align-self:flex-start;background:#1f5eff;color:#fff;border-radius:999px;padding:11px 24px;font:600 14px Prompt;margin-top:6px" style-hover="background:#3a72ff;color:#fff">ดูผลงานทั้งหมด →</a>
+    </div>
+    <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+      <div style="border-radius:14px;overflow:hidden;border:1px solid #e6ebf5;box-shadow:0 10px 30px rgba(11,26,61,.06);background:#fff">
+        <div style="height:140px;background:repeating-linear-gradient(135deg,#eef2f9 0 10px,#e3e9f4 10px 20px);display:grid;place-items:center;font:11px 'JetBrains Mono',monospace;color:#7a86a3">{{ c.img }}</div>
+        <div style="padding:16px 18px 20px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div><div style="display:inline-block;font:600 10px Prompt;color:#1f5eff;background:#eaf0ff;padding:3px 8px;border-radius:4px">{{ c.cat }}</div><div style="font:600 15px Prompt;margin-top:6px">{{ c.name }}</div></div>
+            <div style="width:28px;height:28px;border-radius:50%;background:#1f5eff;color:#fff;display:grid;place-items:center;font-size:13px">→</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div><div style="font:700 24px Prompt;color:#1f5eff">{{ c.v1 }}</div><div style="font-size:12px;color:#5a6788">{{ c.l1 }}</div></div>
+            <div><div style="font:700 24px Prompt;color:#1f5eff">{{ c.v2 }}</div><div style="font-size:12px;color:#5a6788">{{ c.l2 }}</div></div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:#eef2f9;padding:64px 32px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:600 14px Prompt;color:#1f5eff">ขั้นตอนการทำงาน</div>
+      <h2 style="font:700 28px/1.3 Prompt">โปร่งใส เป็นระบบ เน้นผลลัพธ์</h2>
+      <p style="font-size:14px;color:#5a6788">ทุกโปรเจกต์มีแผนงานชัดเจน ตั้งแต่เริ่มต้นจนถึงการวัดผล</p>
+    </div>
+    <div style="grid-column:span 2;min-width:0;background:#fff;border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(11,26,61,.06);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px">
+      <sc-for list="{{ steps }}" as="p" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="color:#1f5eff">{{ p.icon }}</div>
+          <div style="font:600 14px Prompt;color:#1f5eff">{{ p.n }}</div>
+          <div style="font:600 15px/1.5 Prompt">{{ p.t }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" style="background:#0a1f55;color:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))">
+  <div style="min-height:240px;position:relative;background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 10px,rgba(255,255,255,.02) 10px 20px);display:grid;place-items:center;font:12px 'JetBrains Mono',monospace;color:rgba(255,255,255,.6)">team photo — colleagues at laptops<div style="position:absolute;right:28px;top:24px;font:600 26px/1.05 Caveat;color:#fff;transform:rotate(-8deg)">Your Growth<br>Our Mission</div></div>
+  <div style="padding:44px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:500 15px Prompt;color:rgba(255,255,255,.85)">พร้อมเริ่มต้นการเติบโตไปด้วยกัน?</div>
+      <h2 style="font:700 26px/1.35 Prompt">ให้เราช่วยดูแลการตลาดของคุณ</h2>
+      <p style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.75)">ทีมงานของเรายินดีให้คำปรึกษาฟรี วิเคราะห์แนวทางที่เหมาะสมกับธุรกิจของคุณ</p>
+      <a href="#" style="align-self:flex-start;background:#1f5eff;color:#fff;border-radius:999px;padding:14px 28px;font:600 15px Prompt;margin-top:6px;box-shadow:0 10px 30px rgba(31,94,255,.5)" style-hover="background:#3a72ff;color:#fff">ติดต่อขอรับคำปรึกษาฟรี →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;border-left:1px solid rgba(255,255,255,.2);padding-left:28px">
+      <sc-for list="{{ contacts }}" as="k" hint-placeholder-count="3">
+        <div style="display:flex;gap:14px;align-items:center">
+          <div style="width:38px;height:38px;border-radius:50%;background:#fff;color:#0a1f55;display:grid;place-items:center;font:700 13px Prompt;flex:none">{{ k.badge }}</div>
+          <div><div style="font:600 14px Prompt">{{ k.t }}</div><div style="font-size:12px;color:rgba(255,255,255,.7)">{{ k.s }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL + CLIENTS -->
+<section style="background:#fff;padding:56px 32px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:36px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:600 14px Prompt;color:#1f5eff">เสียงจากลูกค้าของเรา</div>
+      <h2 style="font:700 26px/1.3 Prompt">ความไว้วางใจที่เราภูมิใจ</h2>
+      <p style="font-size:14px;color:#5a6788">จากธุรกิจที่เลือกให้เราดูแลการตลาด</p>
+      <a href="#" style="align-self:flex-start;border:1.5px solid #1f5eff;border-radius:999px;padding:8px 22px;font:500 14px Prompt;margin-top:6px">ดูเพิ่มเติม →</a>
+    </div>
+    <div style="border-radius:14px;border:1px solid #e6ebf5;padding:26px;box-shadow:0 10px 30px rgba(11,26,61,.06);display:flex;flex-direction:column;gap:16px">
+      <div style="font:700 36px/0.6 Prompt;color:#1f5eff">“</div>
+      <p style="font-size:14px;line-height:1.75;color:#2a3757">ทีมงาน GROWVANCE ดูแลใกล้ชิดมากครับ ให้คำแนะนำที่เข้าใจธุรกิจของเรา และรายงานผลอย่างโปร่งใส ทำให้เรามั่นใจในทุกแคมเปญ</p>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="width:40px;height:40px;border-radius:50%;background:repeating-linear-gradient(135deg,#eef2f9 0 5px,#dfe6f2 5px 10px)"></div>
+        <div><div style="font:600 13px Prompt">คุณกิตติพงศ์ วงศ์ชวลิต</div><div style="font-size:12px;color:#5a6788">เจ้าของธุรกิจ E-Commerce</div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font:600 15px Prompt">ลูกค้าของเราบางส่วน</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px 16px">
+        <sc-for list="{{ clients }}" as="cl" hint-placeholder-count="6">
+          <div style="font:600 14px Prompt;letter-spacing:1.5px;color:#4a5677;text-align:center;padding:10px 0;border-bottom:1px solid #eef2f9">{{ cl }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#06122f;color:#fff;padding:36px 32px 24px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.12)">
+      <div><div style="font:700 22px/1 Prompt">GROW<span style="color:#5cb4ff">VANCE</span></div><div style="font-size:10px;opacity:.7;margin-top:4px">More Than Marketing. A Partner in Growth.</div></div>
+      <nav style="display:flex;gap:28px;font:500 13px Prompt;flex-wrap:wrap">
+        <a href="#" style="color:rgba(255,255,255,.85)">หน้าแรก</a><a href="#services" style="color:rgba(255,255,255,.85)">บริการของเรา</a><a href="#work" style="color:rgba(255,255,255,.85)">ผลงานของเรา</a><a href="#why" style="color:rgba(255,255,255,.85)">เกี่ยวกับเรา</a><a href="#" style="color:rgba(255,255,255,.85)">บทความ</a><a href="#contact" style="color:rgba(255,255,255,.85)">ติดต่อเรา</a>
+      </nav>
+      <div style="display:flex;gap:16px;align-items:center;font-size:13px;color:rgba(255,255,255,.85)"><span>099-696-3642</span><span style="opacity:.4">|</span><span>@growvance</span></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.6)">
+      <span>© 2025 GROWVANCE. All rights reserved.</span>
+      <span>Digital Marketing • Creative Production • Website • Growth Strategy</span>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  icon(paths, size = 26) {
+    return React.createElement('svg', { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' },
+      paths.map((d, i) => d.startsWith('c:') ? React.createElement('circle', { key: i, cx: d.split(':')[1], cy: d.split(':')[2], r: d.split(':')[3] }) : React.createElement('path', { key: i, d })));
+  }
+  renderVals() {
+    const I = {
+      mega: ['m3 11 18-5v12L3 14v-3z', 'M11.6 16.8a3 3 0 1 1-5.8-1.6'],
+      pen: ['M12 20h9', 'M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'],
+      globe: ['c:12:12:10', 'M2 12h20', 'M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'],
+      chart: ['M3 3v18h18', 'M18 17V9', 'M13 17V5', 'M8 17v-3'],
+      shield: ['M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', 'm9 12 2 2 4-4'],
+      gear: ['c:12:12:3', 'M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1'],
+      users: ['M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2', 'c:9:7:4', 'M22 21v-2a4 4 0 0 0-3-3.87', 'M16 3.13a4 4 0 0 1 0 7.75'],
+      msg: ['M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', 'M8 10h.01M12 10h.01M16 10h.01'],
+      bulb: ['M9 18h6M10 22h4', 'M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z'],
+      play: ['c:12:12:10', 'm10 8 6 4-6 4z'],
+      trend: ['m22 7-8.5 8.5-5-5L2 17', 'M16 7h6v6'],
+    };
+    const ic = (k, s) => this.icon(I[k], s);
+    return {
+      services: [
+        { icon: ic('mega'), title: 'Performance Marketing', tags: 'Google Ads • Meta Ads • Instagram Ads • TikTok Ads', desc: 'เพิ่มการมองเห็น ดึงดูดลูกค้า และสร้างยอดขายที่วัดผลได้' },
+        { icon: ic('pen'), title: 'Creative Production', tags: 'ภาพโฆษณา • กราฟิก • คอนเทนต์ • วิดีโอ', desc: 'สื่อสารแบรนด์อย่างมีพลัง ด้วยคอนเทนต์ที่น่าจดจำ' },
+        { icon: ic('globe'), title: 'Website & Conversion', tags: 'เว็บไซต์ • Landing Page • เพิ่มอัตราการเปลี่ยนเป็นลูกค้า', desc: 'ออกแบบเว็บไซต์ที่สวยงาม ใช้งานง่าย และตอบโจทย์ธุรกิจ' },
+        { icon: ic('chart'), title: 'Strategy & Analytics', tags: 'วิเคราะห์ตลาด • วางกลยุทธ์ • ติดตามผล • ปรับปรุงแคมเปญ', desc: 'ใช้ข้อมูลจริงในการตัดสินใจ เพื่อผลลัพธ์ที่ดียิ่งขึ้น' },
+      ],
+      why: [
+        { icon: ic('shield', 36), title: 'ทีมผู้เชี่ยวชาญ', desc: 'มีประสบการณ์จริง' },
+        { icon: ic('gear', 36), title: 'ทำงานเป็นระบบ', desc: 'โปร่งใส ตรวจสอบได้' },
+        { icon: ic('chart', 36), title: 'วัดผลได้จริง', desc: 'ด้วยข้อมูลและรายงาน' },
+        { icon: ic('users', 36), title: 'ดูแลต่อเนื่อง', desc: 'เหมือนพาร์ตเนอร์ระยะยาว' },
+      ],
+      cases: [
+        { img: 'product shot — skincare', cat: 'E-Commerce', name: 'แบรนด์ความงาม', v1: '+320%', l1: 'ยอดขายเพิ่มขึ้น', v2: '-42%', l2: 'ต้นทุนต่อผลลัพธ์' },
+        { img: 'food photo — restaurant dish', cat: 'Restaurant & F&B', name: 'ร้านอาหาร', v1: '+215%', l1: 'ยอดการจอง', v2: '+68%', l2: 'ผู้ติดตามใหม่' },
+        { img: 'workspace — laptop, office', cat: 'B2B Business', name: 'ธุรกิจเทคโนโลยี', v1: '+180%', l1: 'Lead เพิ่มขึ้น', v2: '-55%', l2: 'ต้นทุนต่อผลลัพธ์' },
+      ],
+      steps: [
+        { icon: ic('msg', 32), n: '01', t: 'รับฟังและวิเคราะห์ความต้องการ' },
+        { icon: ic('bulb', 32), n: '02', t: 'วางกลยุทธ์และแผนการตลาด' },
+        { icon: ic('play', 32), n: '03', t: 'ดำเนินงานและสร้างสรรค์ผลงาน' },
+        { icon: ic('trend', 32), n: '04', t: 'ติดตามผลและปรับปรุงอย่างต่อเนื่อง' },
+      ],
+      contacts: [
+        { badge: '☎', t: '099-696-3642', s: 'จันทร์ - เสาร์ 09.00 - 18.00 น.' },
+        { badge: 'f', t: 'GROWVANCE', s: 'ทักแชทได้เลย' },
+        { badge: 'LINE', t: '@growvance', s: 'เพิ่มเพื่อนผ่าน LINE' },
+      ],
+      clients: ['NEXORA', 'KANA', 'BluePeak', 'LUMIÈRE', 'THAI WELLNESS', 'AURORA'],
+    };
+  }
+}
+</script>
+</body>
+</html>
