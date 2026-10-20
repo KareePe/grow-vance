@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" role="img" aria-label="NEXORA">
+  <circle cx="22" cy="24" r="15" fill="none" stroke="#4f6f86" stroke-width="2.4"/>
+  <path d="M17 17v14M17 17l10 14M27 17v14" fill="none" stroke="#4f6f86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="46" y="32" font-family="'Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="600" letter-spacing="2.5" fill="#33404f">NEXORA</text>
+</svg>

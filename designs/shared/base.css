@@ -1,0 +1,67 @@
+/* Shared tokens + reset for all GROWVANCE design variants (brand colors from the brief) */
+:root{
+  --navy:#0B1F45;
+  --navy-2:#132B5C;
+  --blue:#2563EB;
+  --blue-2:#1D4FD8;
+  --blue-soft:#EAF0FE;
+  --gold:#D4A64A;
+  --white:#FFFFFF;
+  --ink:#0B1F45;
+  --text:#2B3854;
+  --muted:#5B6782;
+  --line:#E3E8F2;
+  --bg-soft:#F5F7FB;
+  --danger:#C2362B;
+  --font:'Manrope','IBM Plex Sans Thai','Noto Sans Thai',sans-serif;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(11,31,69,.08);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:var(--font);color:var(--text);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hp-field{position:absolute;left:-9999px}
+
+/* Image placeholder (replace with real team / work photos) */
+.ph{display:grid;place-items:center;text-align:center;padding:16px;font:500 12px/1.5 ui-monospace,Menlo,monospace;color:#7A86A3;background:repeating-linear-gradient(135deg,#EEF2F9 0 10px,#E5EAF4 10px 20px)}
+.ph-dark{color:rgba(255,255,255,.55);background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 10px,rgba(255,255,255,.02) 10px 20px)}
+
+/* Form fields (shared behaviour; variants restyle the look) */
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;font-weight:600;color:var(--ink)}
+.field .opt{font-weight:400;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1px solid #CBD3E3;border-radius:10px;background:#fff;font-size:15px;color:var(--ink)}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.18)}
+.field [aria-invalid="true"]{border-color:var(--danger)}
+.field-error{min-height:0;font-size:13px;color:var(--danger)}
+.field-error:empty{display:none}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted)}
+.consent input{margin-top:4px;width:16px;height:16px;flex:none;accent-color:var(--blue)}
+.consent a{color:var(--blue);text-decoration:underline}
+.form-success{text-align:center;padding:32px 16px}
+.form-success:focus{outline:none}
+.form-success h3{font-size:22px;color:var(--ink);margin-bottom:8px}
+
+/* FAQ details marker */
+details summary{list-style:none;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+
+/* Mobile menu base */
+.menu-btn{display:none;width:44px;height:44px;border:0;background:transparent;border-radius:10px;cursor:pointer;place-items:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .2s}
+.menu-btn span::before,.menu-btn span::after{content:'';position:absolute;left:0}
+.menu-btn span::before{top:-7px}
+.menu-btn span::after{top:7px}
+.menu-open .menu-btn span{background:transparent}
+.menu-open .menu-btn span::before{transform:translateY(7px) rotate(45deg)}
+.menu-open .menu-btn span::after{transform:translateY(-7px) rotate(-45deg)}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}

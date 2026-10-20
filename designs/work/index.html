@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GROWVANCE — Work 5 แบบ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="work.css">
+<script src="work.js" defer></script>
+</head>
+<body>
+
+<header class="intro">
+  <h1>Work Section — 5 ไอเดีย</h1>
+  <p>รูปจาก Unsplash · ตัวเลขวิ่งเมื่อเลื่อนมาถึง · กด “เล่นซ้ำ” เพื่อดูอีกครั้ง · ลองชี้เมาส์ / คลิกได้ทุกแบบ</p>
+  <nav><a href="#k1">1 Overlay Cards</a><a href="#k2">2 Featured Switcher</a><a href="#k3">3 Slider</a><a href="#k4">4 Flip Cards</a><a href="#k5">5 Dark Bento + CTA</a></nav>
+</header>
+
+<!-- 1 — OVERLAY CARDS -->
+<section class="wk wk1" id="k1" data-wk>
+  <div class="wk-label"><b>แบบที่ 1</b> Overlay Cards — ข้อมูลบนรูป <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap">
+    <div class="head head-split a-up" data-head></div>
+    <div class="o-grid" data-render="overlay"></div>
+  </div>
+</section>
+
+<!-- 2 — FEATURED SWITCHER -->
+<section class="wk wk2" id="k2" data-wk>
+  <div class="wk-label"><b>แบบที่ 2</b> Featured Switcher — คลิกรายการทางขวา <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap">
+    <div class="head head-split a-up" data-head></div>
+    <div class="f-wrap a-up d2" data-render="featured"></div>
+  </div>
+</section>
+
+<!-- 3 — SLIDER -->
+<section class="wk wk3" id="k3" data-wk>
+  <div class="wk-label"><b>แบบที่ 3</b> Slider — ปุ่มลูกศร / ปัด / ลาก <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap">
+    <div class="head head-split a-up">
+      <div data-head-text></div>
+      <div class="s-nav"><button type="button" class="s-btn" data-prev aria-label="ผลงานก่อนหน้า">←</button><button type="button" class="s-btn" data-next aria-label="ผลงานถัดไป">→</button></div>
+    </div>
+  </div>
+  <div class="s-track a-up d2" data-render="slides" tabindex="0" aria-label="ผลงาน (เลื่อนแนวนอน)"></div>
+  <div class="wrap"><div class="s-dots" data-dots></div></div>
+</section>
+
+<!-- 4 — FLIP CARDS -->
+<section class="wk wk4" id="k4" data-wk>
+  <div class="wk-label"><b>แบบที่ 4</b> Flip Cards — ชี้เมาส์ / แตะเพื่อพลิก <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap">
+    <div class="head head-center a-up" data-head></div>
+    <div class="fl-grid" data-render="flip"></div>
+  </div>
+</section>
+
+<!-- 5 — DARK BENTO + CTA -->
+<section class="wk wk5" id="k5" data-wk>
+  <div class="wk-label"><b>แบบที่ 5</b> Dark Bento + CTA Tile <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap">
+    <div class="head head-split a-up" data-head></div>
+    <div class="bn-grid" data-render="bento"></div>
+  </div>
+</section>
+
+</body>
+</html>

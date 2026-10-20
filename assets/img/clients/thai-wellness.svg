@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 56" role="img" aria-label="THAI WELLNESS">
+  <g transform="translate(70 12)" fill="#3b7fd9">
+    <circle r="2.6"/>
+    <g id="petal"><ellipse cx="0" cy="-7" rx="2.6" ry="4.2"/><circle cx="0" cy="-12.5" r="1.4"/></g>
+    <use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/>
+    <use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+  </g>
+  <text x="70" y="38" text-anchor="middle" font-family="Didot,'Bodoni 72',Georgia,serif" font-size="10" letter-spacing="2.5" fill="#5a6f99">THAI</text>
+  <text x="70" y="51" text-anchor="middle" font-family="Didot,'Bodoni 72',Georgia,serif" font-size="11.5" letter-spacing="2.5" fill="#5a6f99">WELLNESS</text>
+</svg>

@@ -1,0 +1,140 @@
+/* Hero concepts — text & CTA emphasis with motion. Animations run when .play is added (hero.js). */
+:root{--ease:cubic-bezier(.22,1,.36,1);--blue:#2563eb;--navy:#0b1f45;--gold:#d4a64a;--sky:#6fa2ff}
+*{box-sizing:border-box}
+body{margin:0;font-family:'IBM Plex Sans Thai',sans-serif;background:#06122f;color:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* Page intro */
+.intro{max-width:1240px;margin:0 auto;padding:40px 32px}
+.intro h1{margin:0;font:700 32px Prompt}
+.intro p{margin:8px 0 20px;color:rgba(255,255,255,.7)}
+.intro nav{display:flex;gap:8px;flex-wrap:wrap}
+.intro nav a{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);font:600 14px Prompt}
+.intro nav a:hover{background:rgba(255,255,255,.16)}
+
+/* Shared hero frame (same background treatment as the live site) */
+.hv{position:relative;min-height:640px;display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(90deg,rgba(11,31,69,.75) 0%,rgba(11,31,69,.45) 38%,rgba(11,31,69,0) 58%),url(../../assets/img/bg-hero.png) right center/cover no-repeat #0a2a7a}
+.hv-label{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:10px;padding:6px 6px 6px 16px;border-radius:999px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);font:500 13px Prompt;white-space:nowrap}
+.hv-label button{border:0;border-radius:999px;padding:6px 12px;background:#fff;color:var(--navy);font:600 12px Prompt;cursor:pointer}
+.hv-inner{width:100%;max-width:1240px;margin:0 auto;padding:96px 32px 72px;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.hv-eyebrow{margin:0;font:500 15px Prompt;color:#7cc4ff;display:flex;align-items:center;gap:10px}
+.hv-title{margin:0;display:flex;flex-direction:column;font:700 clamp(38px,4.8vw,60px)/1.25 Prompt}
+.row{display:block}
+.hv-text{margin:0;max-width:490px;font-size:16px;line-height:1.75;color:rgba(255,255,255,.85)}
+.hv-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:8px}
+
+/* Shared CTA */
+.cta{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:14px;padding:10px 10px 10px 30px;border-radius:999px;background:var(--blue);color:#fff;font:700 17px Prompt;box-shadow:0 14px 36px rgba(37,99,235,.55);transition:transform .3s var(--ease),box-shadow .3s,background .3s}
+.cta:hover{transform:translateY(-3px);box-shadow:0 0 0 3px rgba(212,166,74,.65),0 20px 44px rgba(37,99,235,.6)}
+.cta:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.cta-arrow{width:42px;height:42px;flex:none;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;transition:transform .3s var(--ease)}
+.cta:hover .cta-arrow{transform:translateX(4px)}
+.video{display:grid;grid-template-columns:auto auto;align-items:center;column-gap:12px;font:500 14px Prompt;color:#fff;text-shadow:0 1px 8px rgba(6,18,47,.6)}
+.video small{grid-column:2;align-self:start;opacity:.7;font-size:13px}
+.video-ic{grid-row:span 2;position:relative;width:52px;height:52px;flex:none;border-radius:50%;border:2px solid rgba(255,255,255,.85);display:grid;place-items:center;transition:background .25s,color .25s}
+.video:hover .video-ic{background:#fff;color:var(--navy)}
+
+/* Entrance animations + stagger delays */
+.d0{--d:0s}.d1{--d:.1s}.d2{--d:.22s}.d3{--d:.34s}.d4{--d:.46s}.d5{--d:.58s}.d6{--d:.7s}.d7{--d:.82s}
+.play .a-fade{animation:fadeUp .9s var(--ease) var(--d,0s) both}
+.play .a-slide{animation:slideIn .9s var(--ease) var(--d,0s) both}
+.play .a-blur{animation:blurIn 1s var(--ease) var(--d,0s) both}
+.play .a-zoom{animation:zoomIn 1s var(--ease) var(--d,0s) both}
+.play .a-pop{animation:pop 1s var(--ease) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-48px)}}
+@keyframes blurIn{from{opacity:0;filter:blur(14px);transform:translateY(10px)}}
+@keyframes zoomIn{from{opacity:0;transform:scale(.86)}}
+@keyframes pop{from{opacity:0;transform:translateY(32px) scale(.97)}}
+@keyframes flow{to{background-position:300% 0}}
+
+/* ===== 1 — Line Reveal + Shine ===== */
+.hv1 .line{display:block;overflow:hidden;padding:.12em 0 .16em;margin:-.12em 0 -.16em}
+.hv1 .line>span{display:block}
+.play.hv1 .line>span{animation:rise 1s var(--ease) both}
+.play.hv1 .line:nth-child(2)>span{animation-delay:.12s}
+.play.hv1 .line:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(115%)}}
+.shine{font-style:normal;background:linear-gradient(100deg,#4a9bff 0 40%,#fff 50%,#4a9bff 60% 100%);background-size:250% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3.6s ease-in-out 1s infinite}
+@keyframes shine{0%{background-position:100% 0}60%,100%{background-position:-50% 0}}
+.hv1 .hv-text.d2{--d:.5s}.hv1 .hv-actions.d3{--d:.65s}
+.cta-sheen{overflow:hidden}
+.cta-sheen::after{content:'';position:absolute;z-index:-1;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:sheen 3.2s ease-in-out 1.4s infinite}
+@keyframes sheen{0%{left:-60%}35%,100%{left:130%}}
+
+/* ===== 2 — Highlighter Marker ===== */
+.hv2 .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(212,166,74,.25)}
+.hv2 mark{color:inherit;padding:0 .06em;background:linear-gradient(var(--gold),var(--gold)) 0 86%/100% 28% no-repeat}
+.play.hv2 mark{animation:mark .9s var(--ease) .75s both}
+@keyframes mark{from{background-size:0% 28%}}
+.scribble{position:relative;display:inline-block;color:var(--sky)}
+.scribble svg{position:absolute;left:0;bottom:-.12em;width:100%;height:.3em;overflow:visible}
+.scribble path{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:0}
+.play.hv2 .scribble path{animation:draw 1s var(--ease) 1.2s both}
+@keyframes draw{from{stroke-dashoffset:1}}
+.cta-fill::before{content:'';position:absolute;z-index:-1;inset:0;border-radius:inherit;background:#1238a8;clip-path:inset(0 100% 0 0 round 999px);transition:clip-path .45s var(--ease)}
+.cta-fill:hover::before{clip-path:inset(0 0 0 0 round 999px)}
+.nudge svg{animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
+.video-pulse .video-ic::after{content:'';position:absolute;inset:-2px;border-radius:50%;border:2px solid rgba(255,255,255,.7);animation:ping 2s ease-out infinite}
+@keyframes ping{to{transform:scale(1.6);opacity:0}}
+
+/* ===== 3 — Glass Card + Glow Border ===== */
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
+.glass{position:relative;max-width:640px;padding:44px;border-radius:28px;display:flex;flex-direction:column;align-items:flex-start;gap:20px;background:rgba(11,31,69,.5);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 30px 60px rgba(0,0,0,.3)}
+.glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;background:conic-gradient(from var(--a),rgba(255,255,255,.08) 0deg,var(--sky) 60deg,var(--gold) 110deg,rgba(255,255,255,.08) 170deg 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 6s linear infinite}
+@keyframes spin{to{--a:360deg}}
+.hv3 .hv-title{font-size:clamp(34px,4.2vw,54px)}
+.grad{background:linear-gradient(90deg,var(--sky),#c7dbff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);font:500 13px Prompt;color:rgba(255,255,255,.9)}
+.cta-halo::before{content:'';position:absolute;z-index:-1;inset:0;border-radius:inherit;animation:halo 2.2s ease-out infinite}
+@keyframes halo{from{box-shadow:0 0 0 0 rgba(111,162,255,.75)}to{box-shadow:0 0 0 18px rgba(111,162,255,0)}}
+
+/* ===== 4 — Rotating Keyword + Gradient Border ===== */
+.hv4 .row:first-child{font-size:.62em;color:rgba(255,255,255,.9)}
+.rotator{display:inline-block;height:1.4em;overflow:hidden;vertical-align:bottom;margin-left:.22em;padding:0 .1em;background:linear-gradient(var(--gold),var(--gold)) 0 92%/100% .09em no-repeat}
+.rotator-track{display:flex;flex-direction:column;animation:rotate 7.5s var(--ease) infinite}
+.rotator-track span{display:block;height:1.4em;line-height:1.4em;background:linear-gradient(90deg,var(--sky),#c7dbff);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes rotate{0%,26%{transform:translateY(0)}33%,59%{transform:translateY(-1.4em)}66%,92%{transform:translateY(-2.8em)}100%{transform:translateY(-4.2em)}}
+.cta-ring{display:inline-flex;padding:3px;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--sky),var(--gold),var(--sky),var(--blue));background-size:300% 100%;animation:flow 4s linear infinite;box-shadow:0 0 34px rgba(111,162,255,.45)}
+.cta-ring .cta{box-shadow:none}
+.steps{display:flex;flex-wrap:wrap;gap:6px 0;margin:6px 0 0;padding:0;list-style:none;font:500 14px Prompt;color:rgba(255,255,255,.75)}
+.steps li:not(:last-child)::after{content:'→';margin:0 12px;color:var(--gold)}
+
+/* ===== 5 — Center Stage + Ripple ===== */
+.hv5{min-height:700px;background:radial-gradient(ellipse at center,rgba(11,31,69,.55) 0%,rgba(11,31,69,.92) 72%),url(../../assets/img/bg-hero.png) center/cover no-repeat #0a2a7a}
+.hv5 .hv-inner{align-items:center;text-align:center}
+.hv5 .hv-title{align-items:center;font-size:clamp(40px,6.2vw,84px);line-height:1.2}
+.hv5 .hv-text{max-width:620px}
+.flow{background:linear-gradient(90deg,var(--sky),#fff,var(--gold),var(--sky));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 6s linear infinite}
+.play .flow.a-zoom{animation:zoomIn 1s var(--ease) var(--d) both,flow 6s linear infinite}
+.hv5 .hv-actions{flex-direction:column;gap:22px}
+.cta-ripple{font-size:19px;padding:12px 12px 12px 36px}
+.cta-ripple .cta-arrow{width:48px;height:48px}
+.cta-ripple::before,.cta-ripple::after{content:'';position:absolute;z-index:-1;inset:0;border-radius:inherit;border:2px solid rgba(111,162,255,.7);animation:ripple 2.6s ease-out infinite}
+.cta-ripple::after{animation-delay:1.3s}
+@keyframes ripple{from{transform:scale(1);opacity:.9}to{transform:scale(1.18,1.7);opacity:0}}
+.scroll-cue{position:absolute;bottom:26px;left:50%;width:26px;height:40px;margin-left:-13px;border:2px solid rgba(255,255,255,.6);border-radius:14px}
+.scroll-cue span{position:absolute;top:7px;left:50%;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* Responsive */
+@media (max-width:1031px){
+  .hv:not(.hv5){background-image:linear-gradient(180deg,rgba(11,31,69,.94) 0%,rgba(11,31,69,.8) 55%,rgba(11,31,69,.3) 100%),url(../../assets/img/bg-hero.png);background-position:center,72% center}
+}
+@media (max-width:640px){
+  .intro{padding:28px 16px}
+  .hv{min-height:auto}
+  .hv-inner{padding:84px 16px 64px}
+  .hv-label{font-size:12px}
+  .cta,.cta-ripple{font-size:15px;padding:8px 8px 8px 22px;gap:10px}
+  .cta-arrow,.cta-ripple .cta-arrow{width:36px;height:36px}
+  .glass{padding:28px 20px}
+  .hv4 .row:first-child{font-size:.72em}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}

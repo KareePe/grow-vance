@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GROWVANCE — Testimonials 5 แบบ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="testimonials.css">
+<script src="testimonials.js" defer></script>
+</head>
+<body>
+
+<header class="intro">
+  <h1>Testimonials Section — 5 ไอเดีย</h1>
+  <p>โลโก้ลูกค้า 6 แบรนด์ตามรูปที่แนบ · การ์ดที่มีป้าย “ตัวอย่าง” คือช่องรอข้อความจริงจากลูกค้า · animation เล่นเมื่อเลื่อนมาถึง</p>
+  <nav><a href="#t1">1 Quote + Logo Marquee</a><a href="#t2">2 Carousel</a><a href="#t3">3 Split + Logo Grid</a><a href="#t4">4 Dark Spotlight</a><a href="#t5">5 Logo Bar + Wall</a></nav>
+</header>
+
+<!-- 1 — BIG QUOTE + LOGO MARQUEE -->
+<section class="ts ts1" id="t1" data-ts>
+  <div class="ts-label"><b>แบบที่ 1</b> Big Quote + Logo Marquee <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap center">
+    <div class="head head-center a-up" data-head></div>
+    <figure class="big-quote a-up d2" data-quote="0"></figure>
+  </div>
+  <div class="marquee a-up d3" aria-label="ลูกค้าของเราบางส่วน">
+    <div class="marquee-track" data-logos="marquee"></div>
+  </div>
+</section>
+
+<!-- 2 — CAROUSEL -->
+<section class="ts ts2" id="t2" data-ts>
+  <div class="ts-label"><b>แบบที่ 2</b> Card Carousel — เลื่อนเองทุก 6 วิ <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap">
+    <div class="head head-split a-up">
+      <div data-head-text></div>
+      <div class="car-nav"><button type="button" class="car-btn" data-car-prev aria-label="ก่อนหน้า">←</button><button type="button" class="car-btn" data-car-next aria-label="ถัดไป">→</button></div>
+    </div>
+    <div class="car a-up d2" aria-roledescription="carousel">
+      <div class="car-track" data-render="carousel"></div>
+    </div>
+    <div class="car-dots" data-car-dots></div>
+    <div class="logo-row a-up d3">
+      <p>ลูกค้าของเราบางส่วน</p>
+      <div class="logo-row-list" data-logos="row"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 — SPLIT + LOGO GRID -->
+<section class="ts ts3" id="t3" data-ts>
+  <div class="ts-label"><b>แบบที่ 3</b> Split Quote + Logo Grid <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap s3-grid">
+    <div class="s3-left">
+      <div class="head a-up" data-head></div>
+      <figure class="card-quote a-up d2" data-quote="0"></figure>
+    </div>
+    <div class="s3-right">
+      <p class="s3-cap a-up">ลูกค้าของเราบางส่วน</p>
+      <div class="logo-grid" data-logos="grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 — DARK SPOTLIGHT -->
+<section class="ts ts4" id="t4" data-ts>
+  <div class="ts-label"><b>แบบที่ 4</b> Dark Spotlight — โลโก้ไฮไลต์วนทีละแบรนด์ <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap s4-grid">
+    <div class="s4-quote">
+      <div class="head a-up" data-head></div>
+      <figure class="dark-quote a-up d2" data-quote="0"></figure>
+    </div>
+    <div class="s4-wall a-up d3">
+      <p class="s4-cap">ธุรกิจที่ไว้วางใจให้เราดูแลการตลาด</p>
+      <div class="spot-grid" data-logos="spot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 — LOGO BAR + QUOTE WALL -->
+<section class="ts ts5" id="t5" data-ts>
+  <div class="ts-label"><b>แบบที่ 5</b> Logo Bar + Quote Wall <button type="button" data-replay>↻ เล่นซ้ำ</button></div>
+  <div class="wrap">
+    <div class="logo-bar a-up">
+      <p>ได้รับความไว้วางใจจาก</p>
+      <div class="logo-bar-list" data-logos="bar"></div>
+    </div>
+    <div class="head head-center a-up d2" data-head></div>
+    <div class="wall" data-render="wall"></div>
+  </div>
+</section>
+
+</body>
+</html>

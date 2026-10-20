@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 48" role="img" aria-label="BluePeak">
+  <path d="M22 6 34 18a17 17 0 0 1-12 29A17 17 0 0 1 10 18z" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M15 31l7-8 7 8M18 35l4-4.5 4 4.5" fill="none" stroke="#2563eb" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="44" y="33" font-family="'Helvetica Neue',Arial,sans-serif" font-size="24" font-weight="800" letter-spacing=".2" fill="#2563eb">BluePeak</text>
+</svg>
