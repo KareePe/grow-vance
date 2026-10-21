@@ -10,7 +10,8 @@
       "designs/**",
       "mockup/**",
       "support.js",
-      "assets/img/bg-*.png"
+      "assets/img/bg-*.png",
+      "demo-*.html"
     ],
     "headers": [
       {

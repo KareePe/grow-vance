@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Demo — รูปพื้นหลัง Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fonts load without blocking first paint (display=swap shows fallback text meanwhile) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700;800&amp;family=IBM+Plex+Sans+Thai:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700;800&amp;family=IBM+Plex+Sans+Thai:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700;800&amp;family=IBM+Plex+Sans+Thai:wght@400;500;600&amp;display=swap"></noscript>
+<!-- Bump ?v= whenever these files change: Firebase caches them for a long time -->
+<link rel="stylesheet" href="assets/css/style.css?v=20261021-15">
+<style>
+  /* Demo-only picker; not part of the site */
+  .picker{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e3e8f2;padding:14px 32px;box-shadow:0 6px 20px rgba(11,31,69,.08)}
+  .picker-inner{max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .picker strong{font:700 15px Prompt;color:#0b1f45;margin-right:6px}
+  .picker button{display:flex;align-items:center;gap:8px;padding:5px 14px 5px 5px;border:1.5px solid #e3e8f2;border-radius:999px;background:#fff;color:#0b1f45;font:600 13px Prompt;cursor:pointer}
+  .picker button[aria-pressed="true"]{border-color:#f2c14e;background:#fff7e0}
+  .picker img{width:40px;height:30px;border-radius:999px;object-fit:cover}
+  .picker-note{width:100%;font:400 13px 'IBM Plex Sans Thai';color:#5a6788}
+  .picker-note code{color:#1d4fd8}
+  .spacer{height:60px;background:#fff}
+  @media (max-width:640px){.picker{padding:10px 16px}}
+</style>
+<style id="bg-swap"></style>
+</head>
+<body>
+<div class="picker"><div class="picker-inner" data-picker><strong>รูปพื้นหลัง Contact:</strong><p class="picker-note" data-note></p></div></div>
+<div class="spacer"></div>
+<section id="contact" class="contact play">
+  <div class="container contact-inner">
+    <div class="contact-copy">
+      <div class="contact-eyebrow a-up">Schedule a Strategic Consultation</div>
+      <h2 class="contact-title">
+        <span class="row a-slide">พร้อมพัฒนาการตลาด</span>
+        <span class="row a-slide">ให้<mark>ชัดเจนขึ้น</mark>แล้วหรือยัง?</span>
+      </h2>
+      <p class="contact-lead a-up">พูดคุยกับ GROWVANCE เพื่อทำความเข้าใจโจทย์ธุรกิจ และพิจารณาแนวทางการตลาดที่เหมาะสมกับเป้าหมายของคุณ</p>
+      <div class="contact-btns a-up">
+        <a href="tel:0626466246" class="contact-btn contact-btn-call" data-track="phone_click">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>
+          โทรปรึกษา 062-646-6246
+        </a>
+        <a href="https://lin.ee/SvmdZw1" class="contact-btn contact-btn-line" data-track="line_click">
+          <img src="assets/img/line-cta.webp" alt="" width="26" height="25" class="line-cta-icon">
+          LINE @growvance
+        </a>
+      </div>
+      <p class="contact-hours a-up"><span class="contact-status" data-open-status></span>จันทร์–เสาร์ 09.00–21.00 น.</p>
+    </div>
+  </div>
+</section>
+<div class="spacer"></div>
+<script>
+(function () {
+  const u = (id, w) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+  const options = [
+    { label: 'ปัจจุบัน', src: 'assets/img/bg-contact.webp?v=2', mob: 'assets/img/bg-contact.webp?v=2', thumb: 'assets/img/bg-contact.webp?v=2', pos: 'left center', note: 'รูปเดิม (ภาพเล็ก 2172×386 จึงไม่คมเมื่อขยาย)' },
+    { label: 'A · ทีมรอบแล็ปท็อป', id: '1531545514256-b1400bc00f31', pos: 'left 22%', note: 'ทีมเอเชีย 4 คนยืนดูแล็ปท็อปด้วยกัน ใกล้เคียงรูปเดิมที่สุด' },
+    { label: 'B · ปิดดีลสำเร็จ', id: '1600880292203-757bb62b4baf', pos: 'left 18%', note: 'นักธุรกิจชุดสูทแปะมือกันในออฟฟิศ สื่อถึงความสำเร็จ' },
+    { label: 'C · ออฟฟิศวิวเมือง', id: '1564069114553-7215e1ff1890', pos: 'left 50%', note: 'ออฟฟิศกระจกวิวตึกสูง โทนฟ้า เข้ากับแบรนด์' },
+    { label: 'D · ประชุมทีม', id: '1568992687947-868a62a9f521', pos: 'left 62%', note: 'ทีมนั่งประชุมรอบโต๊ะ โทนเข้ม ดูมืออาชีพ' },
+    { label: 'E · คุยงาน 2 คน', id: '1551836022-d5d88e9218df', pos: 'left 35%', note: 'สองคนคุยงานกับแล็ปท็อป บรรยากาศเป็นกันเอง เหมาะกับ "นัดคุย"' },
+    { label: 'F · ทีมยามเย็น', id: '1515169067868-5387ec356754', pos: 'left 35%', note: 'ทีมยืนคุยกันในออฟฟิศยามเย็น แสงอุ่น' },
+  ].map((o) => o.id ? { ...o, src: u(o.id, 2400), mob: u(o.id, 1200), thumb: u(o.id, 120) } : o);
+
+  const swap = document.getElementById('bg-swap');
+  const picker = document.querySelector('[data-picker]');
+  const note = picker.querySelector('[data-note]');
+  const buttons = options.map((o) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = `<img src="${o.thumb}" alt="">${o.label}`;
+    b.addEventListener('click', () => select(o, b));
+    note.before(b);
+    if (o.id) new Image().src = o.src;
+    return b;
+  });
+  // Same overlays as style.css; only the photo (and its focal point) changes
+  function select(o, btn) {
+    swap.textContent = `
+      .contact{background:linear-gradient(90deg,rgba(9,27,72,0) 0%,rgba(9,27,72,0) 32%,rgba(9,27,72,.8) 52%,rgba(9,27,72,.92) 100%),url(${o.src}) ${o.pos}/cover no-repeat #0a2468}
+      @media (max-width:900px){.contact{background:linear-gradient(180deg,rgba(9,27,72,0) 0px,rgba(9,27,72,.2) 170px,#0a2468 280px),url(${o.mob}) left top/auto 300px no-repeat #0a2468}}`;
+    note.innerHTML = o.id ? `${o.note} — ID: <code>${o.id}</code>` : o.note;
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+  }
+  select(options[0], buttons[0]);
+})();
+</script>
+</body>
+</html>
