@@ -29,15 +29,73 @@
   }), { threshold: 0.2 });
   document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
 
-  // Contact: open / closed badge from Bangkok time (Mon–Sat 09:00–18:00)
+  // Contact: open / closed badge from Bangkok time (Mon–Sat 09:00–21:00)
   const bkk = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }));
-  const isOpen = bkk.getDay() !== 0 && bkk.getHours() >= 9 && bkk.getHours() < 18;
+  const isOpen = bkk.getDay() !== 0 && bkk.getHours() >= 9 && bkk.getHours() < 21;
   document.querySelectorAll('[data-open-status]').forEach((el) => {
     el.textContent = isOpen ? 'เปิดให้บริการตอนนี้' : 'นอกเวลาทำการ';
     el.classList.add(isOpen ? 'is-open' : 'is-closed');
   });
 
-  // Click tracking for Google Ads / GA4 (phone_click, line_click, facebook_click)
+  // Review slider: scroll-snap does the swiping; this adds arrows, dots and autoplay
+  document.querySelectorAll('[data-slider]').forEach((slider) => {
+    const track = slider.querySelector('[data-slider-track]');
+    const slides = [...track.children];
+    const dotsWrap = slider.querySelector('[data-slider-dots]');
+    let current = 0;
+
+    const dots = slides.map((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 't-dot';
+      dot.setAttribute('aria-label', `รีวิวที่ ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.append(dot);
+      return dot;
+    });
+
+    // Layout is only read on interaction, never at startup (avoids a forced reflow)
+    const goTo = (i) => {
+      const n = (i + slides.length) % slides.length;
+      track.scrollTo({ left: n * track.clientWidth, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+    const setCurrent = (i) => {
+      current = i;
+      dots.forEach((d, j) => d.setAttribute('aria-current', String(j === i)));
+    };
+    setCurrent(0);
+
+    // Whichever slide is mostly in view becomes current (covers swipes, arrows and dots)
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) setCurrent(slides.indexOf(e.target));
+    }), { root: track, threshold: 0.6 });
+    slides.forEach((s) => io.observe(s));
+
+    slider.querySelector('[data-slider-prev]').addEventListener('click', () => goTo(current - 1));
+    slider.querySelector('[data-slider-next]').addEventListener('click', () => goTo(current + 1));
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    });
+
+    // Autoplay every 6s; pauses while hovered, focused, touched or off-screen
+    if (reduceMotion) return;
+    let paused = false;
+    let visible = false;
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+    slider.addEventListener('mouseenter', pause);
+    slider.addEventListener('mouseleave', resume);
+    slider.addEventListener('focusin', pause);
+    slider.addEventListener('focusout', resume);
+    track.addEventListener('touchstart', pause, { passive: true });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(slider);
+    setInterval(() => {
+      if (!paused && visible && !document.hidden) goTo(current + 1);
+    }, 6000);
+  });
+
+  // Click tracking for Google Ads / GA4 (phone_click, line_click)
   window.dataLayer = window.dataLayer || [];
   document.querySelectorAll('[data-track]').forEach((el) => el.addEventListener('click', () => {
     window.dataLayer.push({ event: el.dataset.track });
@@ -76,8 +134,9 @@
 
   // Sticky header: add a shadow once the page scrolls
   const header = document.querySelector('[data-header]');
+  // No initial call: reading scrollY during startup forces a full-page layout (long task on mobile).
+  // A restored scroll position fires a scroll event anyway.
   const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
-  onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
   // Mobile menu drawer

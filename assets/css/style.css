@@ -129,24 +129,23 @@ html.is-loading{overflow:hidden}
 
 /* ===== Hero ===== */
 /* Left gradient keeps the copy readable where the photo's diagonal edge reaches under the text */
-.hero{background:linear-gradient(90deg,rgba(11,31,69,.75) 0%,rgba(11,31,69,.45) 38%,rgba(11,31,69,0) 58%),url(../img/bg-hero.png) right center/cover no-repeat #0a2a7a;color:#fff;position:relative;overflow:hidden}
+.hero{background:linear-gradient(90deg,rgba(11,31,69,.75) 0%,rgba(11,31,69,.45) 38%,rgba(11,31,69,0) 58%),url(../img/bg-hero.webp) right center/cover no-repeat #0a2a7a;color:#fff;position:relative;overflow:hidden}
 
 .hero-grid{max-width:1240px;margin:0 auto;padding:40px 32px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:48px;align-items:center;position:relative;z-index:2}
 .hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
 .hero-eyebrow{display:flex;align-items:center;gap:10px;font:500 15px Prompt;color:#7cc4ff}
 .hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#f2c14e;box-shadow:0 0 0 4px rgba(242,193,78,.25)}
-.hero-title{display:flex;flex-direction:column;font:700 clamp(34px,4.2vw,54px)/1.25 Prompt}
+.hero-title{display:flex;flex-direction:column;font:700 clamp(34px,4.2vw,54px)/1.46 Prompt}
 .hero-title .row{display:block}
 /* Gold highlighter under the key phrase */
-.hero-title mark{color:inherit;padding:0 .06em;background:linear-gradient(#f2c14e,#f2c14e) 0 86%/100% 28% no-repeat}
+/* Full gold highlight with blue text on the two key phrases */
+.hero-title mark{color:#1d4fd8;padding:0 .14em;margin:0 -.04em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(#f2c14e,#f2c14e) 0 30%/100% 94% no-repeat}
+.hero-title .d3 mark{margin-left:.1em}
 /* Hand-drawn gold underline */
-.scribble{position:relative;display:inline-block;color:#6fa2ff}
-.scribble svg{position:absolute;left:0;bottom:-.12em;width:100%;height:.3em;overflow:visible}
-.scribble path{fill:none;stroke:#f2c14e;stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:0}
 .hero-text{font-size:16px;line-height:1.75;color:rgba(255,255,255,.85)}
 .hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .hero-chips li{padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);font:500 13px Prompt;color:rgba(255,255,255,.9)}
-.hero-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:4px}
+.hero-actions{display:flex;align-items:center;gap:16px 28px;flex-wrap:wrap;margin-top:4px}
 
 /* Glass card with a glow border that travels around the edge */
 @property --glow-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
@@ -171,12 +170,12 @@ html.is-loading{overflow:hidden}
 .d0{--d:0s}.d1{--d:.12s}.d2{--d:.24s}.d3{--d:.36s}.d4{--d:.5s}.d5{--d:.62s}.d6{--d:.74s}
 .play.a-pop{animation:hero-pop 1s var(--ease-out) both}
 .play .a-slide{animation:hero-slide .9s var(--ease-out) var(--d,0s) both}
-.play mark{animation:hero-mark .9s var(--ease-out) .85s both}
-.play .scribble path{animation:hero-draw 1s var(--ease-out) 1.3s both}
+.play .hero-title mark{animation:hero-mark .7s var(--ease-out) .85s both}
+.play .hero-title .d3 mark{animation-delay:1.25s}
 @keyframes hero-pop{from{opacity:0;transform:translateY(32px) scale(.97)}}
 @keyframes hero-slide{from{opacity:0;transform:translateX(-48px)}}
-@keyframes hero-mark{from{background-size:0% 28%}}
-@keyframes hero-draw{from{stroke-dashoffset:1}}
+/* Text starts white (no highlight yet) and turns blue as the highlight sweeps in */
+@keyframes hero-mark{from{background-size:0% 94%;color:#fff}}
 @media (max-width:640px){
   .hero-grid{padding:28px 16px 48px}
   .glass{padding:28px 20px;border-radius:22px}
@@ -185,15 +184,16 @@ html.is-loading{overflow:hidden}
   .hero *,.hero *::before,.hero *::after,.glass,.glass::before{animation:none!important;transition:none!important}
 }
 
-.video-link,.video-link:hover{color:#fff}
-.video-link{display:flex;align-items:center;gap:14px}
-.video-link-icon{position:relative;width:52px;height:52px;flex:none;border-radius:50%;border:2px solid #fff;display:grid;place-items:center;transition:background .25s,color .25s}
-.video-link:hover .video-link-icon{background:#fff;color:#0b1f45}
-.video-link:hover .video-link-icon svg{fill:#0b1f45}
-.video-link-icon::after{content:'';position:absolute;inset:-2px;border-radius:50%;border:2px solid rgba(255,255,255,.7);animation:ping 2s ease-out infinite}
-@keyframes ping{to{transform:scale(1.6);opacity:0}}
-.video-link-text{font-size:13px;line-height:1.5}
-.video-link-text span{opacity:.7}
+/* Secondary hero CTAs: call uses the gold .btn-hero style (phone rings instead of the arrow nudge) + LINE */
+.hero-contact{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.hero-call .btn-arrow svg{animation:contact-ring 2.4s ease-in-out infinite}
+.hero-cta,.hero-cta:hover{color:#fff}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;min-height:60px;padding:0 26px;border-radius:999px;font:700 17px Prompt;white-space:nowrap;transition:transform .25s var(--ease-out),background .25s,box-shadow .25s}
+.hero-cta:hover{transform:translateY(-2px)}
+.hero-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.hero-cta-line{background:#06c755;box-shadow:0 10px 26px rgba(6,199,85,.35)}
+.hero-cta-line:hover{background:#05b34c}
+@media (max-width:420px){.hero-cta{min-height:54px;padding:0 22px;font-size:15px}}
 .hero-media{position:relative}
 /* Spacer: the laptop/city photo itself comes from the .hero background */
 .hero-photo{aspect-ratio:4/3}
@@ -203,7 +203,7 @@ html.is-loading{overflow:hidden}
 .hero-handwriting{right:8px;top:-16px;text-align:right;text-shadow:0 2px 12px rgba(6,18,47,.6)}
 /* Below this width the grid stacks, so darken the photo behind the copy for readability */
 @media (max-width:1031px){
-  .hero{background-image:linear-gradient(180deg,rgba(11,31,69,.94) 0%,rgba(11,31,69,.8) 55%,rgba(11,31,69,.25) 100%),url(../img/bg-hero.png);background-position:center,72% center}
+  .hero{background-image:linear-gradient(180deg,rgba(11,31,69,.94) 0%,rgba(11,31,69,.8) 55%,rgba(11,31,69,.25) 100%),url(../img/bg-hero.webp);background-position:center,72% center}
 }
 
 /* ===== Services ===== */
@@ -281,7 +281,7 @@ html.is-loading{overflow:hidden}
 
 /* ===== Why ===== */
 /* bg-service photo under a navy overlay that lightens toward the building on the right */
-.why{padding:104px 32px;color:#fff;background:linear-gradient(90deg,rgba(9,27,72,.95) 0%,rgba(9,27,72,.82) 45%,rgba(9,27,72,.5) 100%),url(../img/bg-service.png) 80% center/cover no-repeat #0a2468}
+.why{padding:104px 32px;color:#fff;background:linear-gradient(90deg,rgba(9,27,72,.95) 0%,rgba(9,27,72,.82) 45%,rgba(9,27,72,.5) 100%),url(../img/bg-service.webp) 80% center/cover no-repeat #0a2468}
 .why-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
 .why-intro{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
 .why-eyebrow{display:flex;align-items:center;gap:10px;font:600 14px Prompt;color:#6fa2ff}
@@ -305,7 +305,7 @@ html.is-loading{overflow:hidden}
 .play .why-grid>.a-up:nth-child(3){animation-delay:.39s}
 .play .why-grid>.a-up:nth-child(4){animation-delay:.51s}
 @media (max-width:1031px){
-  .why{background-image:linear-gradient(180deg,rgba(9,27,72,.95) 0%,rgba(9,27,72,.85) 60%,rgba(9,27,72,.6) 100%),url(../img/bg-service.png);background-position:center,75% center}
+  .why{background-image:linear-gradient(180deg,rgba(9,27,72,.95) 0%,rgba(9,27,72,.85) 60%,rgba(9,27,72,.6) 100%),url(../img/bg-service.webp);background-position:center,75% center}
   .why-inner{grid-template-columns:1fr;gap:40px}
 }
 @media (max-width:640px){
@@ -314,6 +314,41 @@ html.is-loading{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){
   .why *{animation:none!important;transition:none!important}
+}
+
+/* ===== Consult (between Why and Work) ===== */
+/* White band after the navy Why section; same gold/blue highlight as the hero */
+.consult{background:#fff;padding:96px 32px;color:#0b1f45;text-align:center}
+.consult-inner{max-width:820px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
+.consult-eyebrow{display:flex;align-items:center;gap:10px;font:600 14px Prompt;color:#2563eb}
+.consult-eyebrow::before{content:'';width:24px;height:2px;border-radius:2px;background:#f2c14e}
+.consult-title{font:700 clamp(26px,3vw,38px)/1.45 Prompt;text-wrap:balance;word-break:keep-all}
+.consult-title mark{color:#1d4fd8;padding:0 .14em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(#f2c14e,#f2c14e) 0 30%/100% 94% no-repeat}
+.consult-text{max-width:640px;font-size:16px;line-height:1.8;color:#5a6788;text-wrap:pretty}
+.consult-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px}
+.consult-btn,.consult-btn:hover{color:#fff}
+.consult-btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:700 15px Prompt;white-space:nowrap;transition:transform .25s var(--ease-out),background .25s,box-shadow .25s}
+.consult-btn:hover{transform:translateY(-2px)}
+.consult-btn:focus-visible{outline:2px solid #2563eb;outline-offset:3px}
+.consult-btn-line{background:#06c755;box-shadow:0 10px 26px rgba(6,199,85,.3)}
+.consult-btn-line:hover{background:#05b34c}
+.consult-btn-call{background:#0b1f45}
+.consult-btn-call:hover{background:#163a82}
+.consult-btn-call svg{color:#f2c14e}
+.play .consult-inner>.a-up:nth-child(2){animation-delay:.1s}
+.play .consult-inner>.a-up:nth-child(3){animation-delay:.2s}
+.play .consult-inner>.a-up:nth-child(4){animation-delay:.3s}
+/* Highlight sweeps in after the title lands; text goes navy → blue on the white background */
+.play .consult-title mark{animation:consult-mark .8s var(--ease-out) .6s both}
+@keyframes consult-mark{from{background-size:0% 94%;color:#0b1f45}}
+@media (max-width:640px){
+  .consult{padding:72px 16px}
+  .consult-title br{display:none}
+  .consult-actions{flex-direction:column;align-items:stretch;width:100%}
+  .consult-btn{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .consult *{animation:none!important;transition:none!important}
 }
 
 /* ===== Work ===== */
@@ -455,17 +490,17 @@ html.is-loading{overflow:hidden}
 }
 
 /* ===== Contact ===== */
-/* bg-contact.png: people on the left; the overlay builds up behind the copy on the right.
+/* bg-contact.webp: people on the left; the overlay builds up behind the copy on the right.
    The section is ~520px tall, close to the photo's own 386px, so "cover" barely upscales it */
-.contact{min-height:520px;display:flex;align-items:center;padding:88px 32px;color:#fff;background:linear-gradient(90deg,rgba(9,27,72,0) 0%,rgba(9,27,72,0) 32%,rgba(9,27,72,.8) 52%,rgba(9,27,72,.92) 100%),url(../img/bg-contact.png) left center/cover no-repeat #0a2468}
+.contact{min-height:520px;display:flex;align-items:center;padding:88px 32px;color:#fff;background:linear-gradient(90deg,rgba(9,27,72,0) 0%,rgba(9,27,72,0) 32%,rgba(9,27,72,.8) 52%,rgba(9,27,72,.92) 100%),url(../img/bg-contact.webp?v=2) left center/cover no-repeat #0a2468}
 .contact-inner{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .contact-copy{grid-column:2;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
 .contact-eyebrow{display:flex;align-items:center;gap:10px;font:600 13px Prompt;letter-spacing:1px;text-transform:uppercase;color:#f2c14e}
 .contact-eyebrow::before{content:'';width:24px;height:2px;border-radius:2px;background:#f2c14e}
 .contact-title{display:flex;flex-direction:column;font:700 clamp(28px,3.2vw,42px)/1.3 Prompt;word-break:keep-all}
 .contact-title .row{display:block}
-/* Gold marker under the key phrase (from contact design 2) */
-.contact-title mark{color:inherit;padding:0 .06em;background:linear-gradient(#f2c14e,#f2c14e) 0 88%/100% 26% no-repeat}
+/* Gold highlight with blue text on the key phrase, same as the hero */
+.contact-title mark{color:#1d4fd8;padding:0 .14em;margin:0 .1em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(#f2c14e,#f2c14e) 0 30%/100% 94% no-repeat}
 .contact-lead{max-width:540px;font-size:15.5px;line-height:1.75;color:rgba(255,255,255,.8)}
 
 .contact-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
@@ -481,12 +516,10 @@ html.is-loading{overflow:hidden}
 .contact-btn-call svg{animation:contact-ring 2.4s ease-in-out infinite}
 @keyframes contact-sheen{0%{left:-60%}35%,100%{left:130%}}
 @keyframes contact-ring{0%,60%,100%{transform:rotate(0)}65%,75%,85%{transform:rotate(-14deg)}70%,80%,90%{transform:rotate(14deg)}}
-/* LINE / Facebook: solid brand colours */
+/* LINE: solid brand colour */
 .contact-btn-line{background:#06c755;box-shadow:0 12px 30px rgba(6,199,85,.35)}
 .contact-btn-line:hover{background:#05b34c;box-shadow:0 0 0 3px rgba(6,199,85,.3),0 16px 36px rgba(6,199,85,.45)}
 .line-cta-icon{flex:none;display:block}
-.contact-btn-fb{background:#1877f2;box-shadow:0 12px 30px rgba(24,119,242,.35)}
-.contact-btn-fb:hover{background:#166fe0;box-shadow:0 0 0 3px rgba(24,119,242,.3),0 16px 36px rgba(24,119,242,.45)}
 
 .contact-hours{display:flex;align-items:center;flex-wrap:wrap;gap:12px;font-size:14px;color:rgba(255,255,255,.65)}
 .contact-status{display:inline-flex;align-items:center;gap:8px;padding:4px 12px 4px 10px;border-radius:999px;font:600 13px Prompt}
@@ -498,7 +531,7 @@ html.is-loading{overflow:hidden}
 .contact-status.is-closed::before{background:rgba(255,255,255,.5)}
 @keyframes contact-blink{50%{box-shadow:0 0 0 5px rgba(74,222,128,.25)}}
 
-/* Entrance: lines slide in, then the marker draws under "ชัดเจนขึ้น" */
+/* Entrance: lines slide in, then the highlight sweeps across "ชัดเจนขึ้น" */
 .play .a-slide{animation:contact-slide .9s var(--ease-out) both}
 .play .contact-title .row:nth-child(2){animation-delay:.12s}
 .play .contact-title mark{animation:contact-mark .9s var(--ease-out) .7s both}
@@ -506,11 +539,11 @@ html.is-loading{overflow:hidden}
 .play .contact-btns{animation-delay:.38s}
 .play .contact-hours{animation-delay:.5s}
 @keyframes contact-slide{from{opacity:0;transform:translateX(-40px)}}
-@keyframes contact-mark{from{background-size:0% 26%}}
+@keyframes contact-mark{from{background-size:0% 94%;color:#fff}}
 
 /* Stacked: photo band on top, copy on solid navy below */
 @media (max-width:900px){
-  .contact{display:block;min-height:0;padding:280px 32px 72px;background:linear-gradient(180deg,rgba(9,27,72,0) 0px,rgba(9,27,72,.2) 170px,#0a2468 280px),url(../img/bg-contact.png) left top/auto 300px no-repeat #0a2468}
+  .contact{display:block;min-height:0;padding:280px 32px 72px;background:linear-gradient(180deg,rgba(9,27,72,0) 0px,rgba(9,27,72,.2) 170px,#0a2468 280px),url(../img/bg-contact.webp?v=2) left top/auto 300px no-repeat #0a2468}
   .contact-inner{grid-template-columns:1fr}
   .contact-copy{grid-column:1}
 }
@@ -532,7 +565,21 @@ html.is-loading{overflow:hidden}
 .testimonials-lead{margin-top:10px;font-size:15px;line-height:1.75;color:#5a6788}
 
 /* Big centred quote */
-.big-quote{max-width:820px;margin:0;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+/* Review slider: native scroll-snap (swipe on touch), arrows + dots + autoplay in script.js */
+.t-slider{width:100%;max-width:820px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.t-track{display:flex;width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none}
+.t-track::-webkit-scrollbar{display:none}
+.t-track:focus-visible{outline:2px solid #2563eb;outline-offset:6px;border-radius:12px}
+.t-slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;padding:0 8px}
+.t-controls{display:flex;align-items:center;gap:18px;margin-top:10px}
+.t-arrow{width:44px;height:44px;border:1.5px solid #e3e8f2;border-radius:50%;background:#fff;color:#0b1f45;display:grid;place-items:center;cursor:pointer;transition:background .25s,border-color .25s,color .25s,transform .25s var(--ease-out)}
+.t-arrow:hover{background:#0b1f45;border-color:#0b1f45;color:#fff}
+.t-arrow:active{transform:scale(.94)}
+.t-arrow:focus-visible,.t-dot:focus-visible{outline:2px solid #2563eb;outline-offset:3px}
+.t-dots{display:flex;gap:8px}
+.t-dot{width:10px;height:10px;padding:0;border:0;border-radius:999px;background:#d5dcea;cursor:pointer;transition:width .35s var(--ease-out),background .35s}
+.t-dot[aria-current="true"]{width:28px;background:#f2c14e}
+.big-quote{margin:0;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
 .big-quote-mark{width:60px;height:45px;fill:#f2c14e}
 .big-quote-stars{font-size:16px;letter-spacing:3px;color:#f2c14e}
 .big-quote blockquote{margin:0;font:500 clamp(20px,2.2vw,26px)/1.65 Prompt}
@@ -549,7 +596,7 @@ html.is-loading{overflow:hidden}
 .client-logo img{display:block;height:40px;width:auto;filter:grayscale(1);opacity:.55;transition:filter .35s,opacity .35s,transform .35s var(--ease-out)}
 .client-logo img.is-tall{height:52px}
 .client-logo:hover img{filter:none;opacity:1;transform:scale(1.06)}
-.play .testimonials-inner .big-quote{animation-delay:.15s}
+.play .testimonials-inner .t-slider{animation-delay:.15s}
 .play .logo-marquee{animation-delay:.3s}
 @media (max-width:640px){
   .testimonials{padding-top:72px}
@@ -557,6 +604,7 @@ html.is-loading{overflow:hidden}
   .logo-marquee-track{gap:56px}
 }
 @media (prefers-reduced-motion:reduce){
+  .t-track{scroll-behavior:auto}
   .logo-marquee-track{animation:none;flex-wrap:wrap;justify-content:center;gap:28px 48px;width:auto;padding:0 16px}
   .logo-marquee{-webkit-mask:none;mask:none}
   .client-logo[aria-hidden]{display:none}
@@ -580,9 +628,6 @@ html.is-loading{overflow:hidden}
 .footer-btn-call{background:#f2c14e;box-shadow:0 10px 26px rgba(242,193,78,.45)}
 .footer-btn-line{background:#06c755;box-shadow:0 10px 26px rgba(6,199,85,.35)}
 .footer-btn-line:hover{background:#05b34c}
-/* Facebook sits on a blue banner, so a white ring keeps it distinct */
-.footer-btn-fb{background:#1877f2;box-shadow:0 0 0 2px rgba(255,255,255,.55),0 10px 26px rgba(24,119,242,.35)}
-.footer-btn-fb:hover{background:#166fe0;box-shadow:0 0 0 2px #fff,0 14px 30px rgba(24,119,242,.45)}
 
 /* Link columns */
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px}
@@ -600,7 +645,6 @@ html.is-loading{overflow:hidden}
 .footer-socials .footer-social::after{display:none}
 .footer-social:hover{transform:translateY(-3px)}
 .footer-social-line:hover{background:#06c755;border-color:#06c755}
-.footer-social-fb:hover{background:#1877f2;border-color:#1877f2}
 .footer-socials .footer-social-call:hover{background:#f2c14e;border-color:#f2c14e;color:#0b1f45}
 .footer-hours{margin:14px 0 0;font-size:13.5px;color:rgba(255,255,255,.65)}
 
@@ -636,16 +680,13 @@ html.is-loading{overflow:hidden}
 .float-btn{position:relative;width:48px;height:48px;border:0;border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;box-shadow:0 10px 24px rgba(11,31,69,.28);opacity:0;transform:translateY(16px) scale(.8);transition:opacity .35s,transform .45s var(--ease-out),background .25s,box-shadow .25s}
 .float-btn:hover{color:#fff}
 .float-cta.is-visible .float-btn{opacity:1;transform:none;pointer-events:auto}
-/* column-reverse: DOM order (top, FB, call, LINE) stacks bottom → top; stagger follows it */
+/* column-reverse: DOM order (top, call, LINE) stacks bottom → top; stagger follows it */
 .float-cta.is-visible .float-btn:nth-child(2){transition-delay:.06s}
 .float-cta.is-visible .float-btn:nth-child(3){transition-delay:.12s}
-.float-cta.is-visible .float-btn:nth-child(4){transition-delay:.18s}
 .float-cta.is-visible .float-btn:hover{transform:translateY(-3px);transition-delay:0s}
 .float-btn:focus-visible{outline:2px solid #f2c14e;outline-offset:3px}
 .float-btn-top{width:42px;height:42px;background:#0b1f45;border:1px solid rgba(255,255,255,.14)}
 .float-btn-top:hover{background:#163a82}
-.float-btn-fb{background:#1877f2}
-.float-btn-fb:hover{background:#166fe0}
 .float-btn-call,.float-btn-call:hover{color:#0b1f45}
 .float-btn-call{background:#f2c14e}
 .float-btn-call:hover{background:#f7d277}
@@ -668,3 +709,14 @@ html.is-loading{overflow:hidden}
   .float-cta.is-visible .float-btn:hover{transform:none}
   .float-btn-line::before{animation:none}
 }
+
+/* Phones get a 900px-wide background (the full-size file is wasted at this width) */
+@media (max-width:640px){
+  .hero{background-image:linear-gradient(180deg,rgba(11,31,69,.94) 0%,rgba(11,31,69,.8) 55%,rgba(11,31,69,.25) 100%),url(../img/bg-hero-900.webp)}
+  .why{background-image:linear-gradient(180deg,rgba(9,27,72,.95) 0%,rgba(9,27,72,.85) 60%,rgba(9,27,72,.6) 100%),url(../img/bg-service-900.webp)}
+}
+
+/* ===== Rendering performance ===== */
+/* Skip style/layout for sections until they near the viewport (Thai text layout is costly on mobile).
+   The footer is excluded: its CTA banner overflows upward and paint containment would clip it. */
+.services,.why,.consult,.work,.process,.contact,.testimonials{content-visibility:auto;contain-intrinsic-size:auto 900px}

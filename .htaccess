@@ -1,0 +1,5 @@
+# Local XAMPP only (Firebase ignores dotfiles and compresses on its own):
+# mirror production gzip so local Lighthouse runs are comparable.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>

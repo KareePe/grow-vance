@@ -4,7 +4,27 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "*.json",
+      "breif/**",
+      "designs/**",
+      "mockup/**",
+      "support.js",
+      "assets/img/bg-*.png"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(webp|avif|png|jpg|jpeg|svg|ico|woff2)",
+        "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      },
+      {
+        "source": "**/*.@(html|txt|xml)",
+        "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+      }
     ]
   }
 }
