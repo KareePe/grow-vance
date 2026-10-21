@@ -109,6 +109,24 @@ body.menu-open{overflow:hidden}
   .mobile-menu *,.menu-toggle span{transition-duration:.01ms!important;transition-delay:0s!important}
 }
 
+/* ===== Preloader ===== */
+html.is-loading{overflow:hidden}
+.preloader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#0b1f45;color:#fff;transition:opacity .6s var(--ease-out),visibility 0s .6s}
+.preloader.is-done{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-inner{display:flex;flex-direction:column;align-items:center;gap:18px;transition:transform .6s var(--ease-out)}
+.preloader.is-done .preloader-inner{transform:translateY(-12px)}
+.preloader-logo{width:72px;height:72px;border-radius:18px;background:#fff;display:grid;place-items:center;box-shadow:0 0 0 0 rgba(242,193,78,.5);animation:preloader-pulse 1.6s ease-out infinite}
+.preloader-name{font:800 24px/1 Prompt;letter-spacing:3px}
+.preloader-bar{position:relative;width:140px;height:3px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
+.preloader-bar span{position:absolute;inset:0;width:40%;border-radius:3px;background:#f2c14e;animation:preloader-slide 1.2s ease-in-out infinite}
+@keyframes preloader-pulse{to{box-shadow:0 0 0 18px rgba(242,193,78,0)}}
+@keyframes preloader-slide{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
+@media (prefers-reduced-motion:reduce){
+  .preloader-logo,.preloader-bar span{animation:none}
+  .preloader-bar span{width:100%}
+  .preloader,.preloader-inner{transition-duration:.01ms}
+}
+
 /* ===== Hero ===== */
 /* Left gradient keeps the copy readable where the photo's diagonal edge reaches under the text */
 .hero{background:linear-gradient(90deg,rgba(11,31,69,.75) 0%,rgba(11,31,69,.45) 38%,rgba(11,31,69,0) 58%),url(../img/bg-hero.png) right center/cover no-repeat #0a2a7a;color:#fff;position:relative;overflow:hidden}
@@ -466,6 +484,7 @@ body.menu-open{overflow:hidden}
 /* LINE / Facebook: solid brand colours */
 .contact-btn-line{background:#06c755;box-shadow:0 12px 30px rgba(6,199,85,.35)}
 .contact-btn-line:hover{background:#05b34c;box-shadow:0 0 0 3px rgba(6,199,85,.3),0 16px 36px rgba(6,199,85,.45)}
+.line-cta-icon{flex:none;display:block}
 .contact-btn-fb{background:#1877f2;box-shadow:0 12px 30px rgba(24,119,242,.35)}
 .contact-btn-fb:hover{background:#166fe0;box-shadow:0 0 0 3px rgba(24,119,242,.3),0 16px 36px rgba(24,119,242,.45)}
 
@@ -609,4 +628,43 @@ body.menu-open{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){
   .site-footer *,.site-footer *::after{transition:none!important}
+}
+
+/* ===== Floating CTA ===== */
+/* Below the mobile drawer (z 90) so the open menu covers it */
+.float-cta{position:fixed;right:20px;bottom:20px;z-index:80;display:flex;flex-direction:column-reverse;align-items:center;gap:10px;pointer-events:none}
+.float-btn{position:relative;width:48px;height:48px;border:0;border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;box-shadow:0 10px 24px rgba(11,31,69,.28);opacity:0;transform:translateY(16px) scale(.8);transition:opacity .35s,transform .45s var(--ease-out),background .25s,box-shadow .25s}
+.float-btn:hover{color:#fff}
+.float-cta.is-visible .float-btn{opacity:1;transform:none;pointer-events:auto}
+/* column-reverse: DOM order (top, FB, call, LINE) stacks bottom → top; stagger follows it */
+.float-cta.is-visible .float-btn:nth-child(2){transition-delay:.06s}
+.float-cta.is-visible .float-btn:nth-child(3){transition-delay:.12s}
+.float-cta.is-visible .float-btn:nth-child(4){transition-delay:.18s}
+.float-cta.is-visible .float-btn:hover{transform:translateY(-3px);transition-delay:0s}
+.float-btn:focus-visible{outline:2px solid #f2c14e;outline-offset:3px}
+.float-btn-top{width:42px;height:42px;background:#0b1f45;border:1px solid rgba(255,255,255,.14)}
+.float-btn-top:hover{background:#163a82}
+.float-btn-fb{background:#1877f2}
+.float-btn-fb:hover{background:#166fe0}
+.float-btn-call,.float-btn-call:hover{color:#0b1f45}
+.float-btn-call{background:#f2c14e}
+.float-btn-call:hover{background:#f7d277}
+.float-btn-line{width:60px;height:60px;background:#06c755;box-shadow:0 12px 30px rgba(6,199,85,.45)}
+.float-btn-line:hover{background:#05b34c}
+.float-btn-line::before{content:'';position:absolute;inset:0;border-radius:50%;animation:float-ping 2.4s ease-out infinite}
+@keyframes float-ping{from{box-shadow:0 0 0 0 rgba(6,199,85,.5)}to{box-shadow:0 0 0 14px rgba(6,199,85,0)}}
+/* Hover label on devices with a mouse */
+.float-btn::after{content:attr(data-tip);position:absolute;right:calc(100% + 12px);top:50%;padding:6px 12px;border-radius:8px;background:#0b1f45;color:#fff;font:600 13px Prompt;white-space:nowrap;opacity:0;transform:translate(6px,-50%);pointer-events:none;transition:opacity .2s,transform .2s}
+@media (hover:hover){.float-btn:hover::after,.float-btn:focus-visible::after{opacity:1;transform:translate(0,-50%)}}
+.menu-open .float-cta{opacity:0;visibility:hidden}
+@media (max-width:640px){
+  .float-cta{right:14px;bottom:14px;gap:8px}
+  .float-btn{width:44px;height:44px}
+  .float-btn-top{width:40px;height:40px}
+  .float-btn-line{width:54px;height:54px}
+}
+@media (prefers-reduced-motion:reduce){
+  .float-btn{transition:opacity .2s,background .25s;transform:none}
+  .float-cta.is-visible .float-btn:hover{transform:none}
+  .float-btn-line::before{animation:none}
 }

@@ -1,0 +1,8 @@
+# TODO: replace https://example.com with the real domain
+User-agent: *
+Allow: /
+Disallow: /breif/
+Disallow: /designs/
+Disallow: /mockup/
+
+Sitemap: https://example.com/sitemap.xml
