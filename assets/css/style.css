@@ -132,13 +132,15 @@ html.is-loading{overflow:hidden}
 .hero{background:linear-gradient(90deg,rgba(11,31,69,.75) 0%,rgba(11,31,69,.45) 38%,rgba(11,31,69,0) 58%),url(../img/bg-hero.webp) right center/cover no-repeat #0a2a7a;color:#fff;position:relative;overflow:hidden}
 
 .hero-grid{max-width:1240px;margin:0 auto;padding:40px 32px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:48px;align-items:center;position:relative;z-index:2}
-.hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:20px;container-type:inline-size}
 .hero-eyebrow{display:flex;align-items:center;gap:10px;font:500 15px Prompt;color:#7cc4ff}
 .hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#f2c14e;box-shadow:0 0 0 4px rgba(242,193,78,.25)}
 .hero-title{display:flex;flex-direction:column;font:700 clamp(34px,4.2vw,54px)/1.46 Prompt}
 .hero-title .row{display:block}
+/* Long rows (~18.3em in Prompt Bold) stay on one line: sized to the card width, capped at 40px */
+.hero-title .row-fit{white-space:nowrap;font-size:min(4.2vw,28px);font-size:min(5.2cqi,40px)}
 /* Hand-drawn gold brush stroke under key phrases (hero, consult, contact); gold text on dark, blue on white */
-.hero-title mark,.consult-title mark,.contact-title mark{position:relative;isolation:isolate;display:inline-block;margin:0 .06em;color:#ffd772;background:none}
+.hero-title mark,.consult-title mark,.contact-title mark,.gads-title mark{position:relative;isolation:isolate;display:inline-block;margin:0 .06em;color:#ffd772;background:none}
 .consult-title mark{color:#1d4fd8}
 .mark-line{position:absolute;z-index:-1;left:-3%;bottom:-.02em;width:106%;height:.32em;overflow:visible;pointer-events:none}
 .mark-line path{fill:none;stroke:#f2c14e;stroke-width:7;stroke-linecap:round;stroke-dasharray:1}
@@ -331,6 +333,46 @@ html:has(.policy-modal[open]){overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){
   .services *,.services *::before{animation:none!important;transition:none!important}
+}
+
+/* ===== Google Ads (between Services and Why) ===== */
+.gads{padding:96px 32px;background:#f5f7fb;color:#0b1f45}
+.gads-head{max-width:760px;margin:0 auto 48px;text-align:center}
+.gads-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:12px;font:600 14px Prompt;color:#2563eb}
+.gads-eyebrow::before,.gads-eyebrow::after{content:'';width:24px;height:2px;border-radius:2px;background:#f2c14e}
+.gads-title{font:700 clamp(28px,3.2vw,40px)/1.35 Prompt;text-wrap:balance}
+.gads-title mark{color:#1d4fd8}
+.gads-lead{margin-top:16px;font-size:15.5px;line-height:1.75;color:#5a6788}
+.gads-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.gads-card{display:flex;flex-direction:column;gap:10px;padding:26px 24px;border-radius:22px;background:#fff;border:1px solid #e3e8f2;box-shadow:0 10px 30px rgba(11,31,69,.06);transition:transform .4s var(--ease-out),box-shadow .4s,border-color .4s}
+.gads-card:hover{transform:translateY(-6px);border-color:rgba(37,99,235,.35);box-shadow:0 20px 44px rgba(11,31,69,.12)}
+.gads-icon{width:52px;height:52px;margin-bottom:8px;border-radius:16px;background:#eaf0fe;color:#2563eb;display:grid;place-items:center;transition:background .35s,color .35s,transform .4s var(--ease-out)}
+.gads-card:hover .gads-icon{background:#f2c14e;color:#0b1f45;transform:rotate(-8deg)}
+.gads-card h3{font:600 18px/1.35 Prompt}
+.gads-card p{font-size:14px;line-height:1.7;color:#5a6788}
+.gads-panel{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,2fr);gap:36px;align-items:center;margin-top:32px;padding:36px 40px;border-radius:24px;background:linear-gradient(120deg,#0b1f45,#163a82);color:#fff}
+.gads-panel-intro{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.gads-panel-title{font:700 24px/1.4 Prompt}
+.gads-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin:0;padding:0;list-style:none;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.85)}
+.gads-list li{position:relative;padding-left:28px}
+.gads-list li::before{content:'';position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:6px;background:rgba(242,193,78,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f2c14e' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center/11px no-repeat}
+.play .gads-grid>.a-up:nth-child(1){animation-delay:.1s}
+.play .gads-grid>.a-up:nth-child(2){animation-delay:.22s}
+.play .gads-grid>.a-up:nth-child(3){animation-delay:.34s}
+.play .gads-grid>.a-up:nth-child(4){animation-delay:.46s}
+@media (max-width:1100px){
+  .gads-grid{grid-template-columns:1fr 1fr}
+  .gads-panel{grid-template-columns:1fr;gap:24px}
+}
+@media (max-width:640px){
+  .gads{padding:72px 16px}
+  .gads-grid{grid-template-columns:1fr}
+  .gads-panel{padding:28px 22px}
+  .gads-panel-title{font-size:21px}
+  .gads-list{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .gads *{animation:none!important;transition:none!important}
 }
 
 /* ===== Pricing ===== */
@@ -629,9 +671,9 @@ html:has(.policy-modal[open]){overflow:hidden}
 }
 
 /* ===== Contact ===== */
-/* bg-contact.webp: people on the left; the overlay builds up behind the copy on the right.
-   The section is ~520px tall, close to the photo's own 386px, so "cover" barely upscales it */
-.contact{min-height:520px;display:flex;align-items:center;padding:88px 32px;color:#fff;background:linear-gradient(90deg,rgba(9,27,72,0) 0%,rgba(9,27,72,0) 32%,rgba(9,27,72,.8) 52%,rgba(9,27,72,.92) 100%),url(../img/bg-contact.webp?v=2) left center/cover no-repeat #0a2468}
+/* bg-contact-analytics.webp (mirrored so the team sits on the left); the overlay builds up behind the copy on the right.
+   The 3:2 photo is taller than the section, so "cover" crops it vertically; 35% keeps the faces in view */
+.contact{min-height:520px;display:flex;align-items:center;padding:88px 32px;color:#fff;background:linear-gradient(90deg,rgba(9,27,72,0) 0%,rgba(9,27,72,0) 32%,rgba(9,27,72,.8) 52%,rgba(9,27,72,.92) 100%),url(../img/bg-contact-analytics.webp) left 35%/cover no-repeat #0a2468}
 .contact-inner{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .contact-copy{grid-column:2;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
 .contact-eyebrow{display:flex;align-items:center;gap:10px;font:600 13px Prompt;letter-spacing:1px;text-transform:uppercase;color:#f2c14e}
@@ -680,7 +722,7 @@ html:has(.policy-modal[open]){overflow:hidden}
 
 /* Stacked: photo band on top, copy on solid navy below */
 @media (max-width:900px){
-  .contact{display:block;min-height:0;padding:280px 32px 72px;background:linear-gradient(180deg,rgba(9,27,72,0) 0px,rgba(9,27,72,.2) 170px,#0a2468 280px),url(../img/bg-contact.webp?v=2) left top/auto 300px no-repeat #0a2468}
+  .contact{display:block;min-height:0;padding:280px 32px 72px;background:linear-gradient(180deg,rgba(9,27,72,0) 0px,rgba(9,27,72,.2) 170px,#0a2468 280px),url(../img/bg-contact-analytics-900.webp) center top/100% auto no-repeat #0a2468}
   .contact-inner{grid-template-columns:1fr}
   .contact-copy{grid-column:1}
 }
