@@ -162,4 +162,13 @@
   });
   // Close the drawer if the viewport grows back to desktop width
   window.matchMedia('(min-width: 1101px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+
+  // Modals: [data-modal-open="id"] opens a <dialog>; close button, Esc (native) or a backdrop click closes it
+  document.querySelectorAll('[data-modal-open]').forEach((btn) => {
+    const dialog = document.getElementById(btn.dataset.modalOpen);
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    btn.addEventListener('click', () => dialog.showModal());
+    dialog.querySelectorAll('[data-modal-close]').forEach((el) => el.addEventListener('click', () => dialog.close()));
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+  });
 })();

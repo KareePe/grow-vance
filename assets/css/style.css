@@ -137,11 +137,13 @@ html.is-loading{overflow:hidden}
 .hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#f2c14e;box-shadow:0 0 0 4px rgba(242,193,78,.25)}
 .hero-title{display:flex;flex-direction:column;font:700 clamp(34px,4.2vw,54px)/1.46 Prompt}
 .hero-title .row{display:block}
-/* Gold highlighter under the key phrase */
-/* Full gold highlight with blue text on the two key phrases */
-.hero-title mark{color:#1d4fd8;padding:0 .14em;margin:0 -.04em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(#f2c14e,#f2c14e) 0 30%/100% 94% no-repeat}
-.hero-title .d3 mark{margin-left:.1em}
-/* Hand-drawn gold underline */
+/* Hand-drawn gold brush stroke under key phrases (hero, consult, contact); gold text on dark, blue on white */
+.hero-title mark,.consult-title mark,.contact-title mark{position:relative;isolation:isolate;display:inline-block;margin:0 .06em;color:#ffd772;background:none}
+.consult-title mark{color:#1d4fd8}
+.mark-line{position:absolute;z-index:-1;left:-3%;bottom:-.02em;width:106%;height:.32em;overflow:visible;pointer-events:none}
+.mark-line path{fill:none;stroke:#f2c14e;stroke-width:7;stroke-linecap:round;stroke-dasharray:1}
+/* Brush stroke draws itself left to right; hidden while waiting so the round cap doesn't show as a dot */
+@keyframes mark-draw{0%{stroke-dashoffset:1;opacity:0}1%{opacity:1}100%{stroke-dashoffset:0}}
 .hero-text{font-size:16px;line-height:1.75;color:rgba(255,255,255,.85)}
 .hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .hero-chips li{padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);font:500 13px Prompt;color:rgba(255,255,255,.9)}
@@ -170,12 +172,10 @@ html.is-loading{overflow:hidden}
 .d0{--d:0s}.d1{--d:.12s}.d2{--d:.24s}.d3{--d:.36s}.d4{--d:.5s}.d5{--d:.62s}.d6{--d:.74s}
 .play.a-pop{animation:hero-pop 1s var(--ease-out) both}
 .play .a-slide{animation:hero-slide .9s var(--ease-out) var(--d,0s) both}
-.play .hero-title mark{animation:hero-mark .7s var(--ease-out) .85s both}
-.play .hero-title .d3 mark{animation-delay:1.25s}
+.play .hero-title .mark-line path{animation:mark-draw .9s var(--ease-out) .9s both}
+.play .hero-title .d3 .mark-line path{animation-delay:1.3s}
 @keyframes hero-pop{from{opacity:0;transform:translateY(32px) scale(.97)}}
 @keyframes hero-slide{from{opacity:0;transform:translateX(-48px)}}
-/* Text starts white (no highlight yet) and turns blue as the highlight sweeps in */
-@keyframes hero-mark{from{background-size:0% 94%;color:#fff}}
 @media (max-width:640px){
   .hero-grid{padding:28px 16px 48px}
   .glass{padding:28px 20px;border-radius:22px}
@@ -259,8 +259,60 @@ html.is-loading{overflow:hidden}
 .play .services-grid>.a-up:nth-child(4){animation-delay:.51s}
 @keyframes reveal-up{from{opacity:0;transform:translateY(36px)}}
 
+/* Transparent ad-budget note under the cards: split layout on a cream card with a gold left edge */
+.svc-note{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:center;margin-top:40px;padding:30px 34px 30px 38px;border-radius:22px;background:#fffaf0;border:1px solid #f6e3b4;overflow:hidden}
+.svc-note::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#f2c14e}
+.svc-note-kicker{display:flex;align-items:center;gap:8px;margin-bottom:6px;font:600 13px Prompt;color:#a8790f}
+.svc-note-kicker::before{content:'';width:20px;height:2px;border-radius:2px;background:#f2c14e}
+.svc-note-title{font:700 22px/1.4 Prompt;color:#0b1f45}
+.svc-note-points{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0;padding:0;list-style:none}
+.svc-note-points li{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:16px;background:#fff;border:1px solid #f6e3b4;font-size:14.5px;line-height:1.6;color:#5a6788}
+.svc-note-points b{color:#0b1f45;font-weight:600}
+.svc-note-points svg{flex:none;width:38px;height:38px;padding:9px;border-radius:12px;background:#f2c14e;color:#0b1f45}
+.play .services .svc-note{animation-delay:.65s}
+/* Navy pill so the policy link stands out on the cream card */
+.svc-note-more{display:inline-flex;align-items:center;gap:12px;margin-top:18px;padding:8px 8px 8px 20px;border:0;border-radius:999px;background:#0b1f45;font:600 15px Prompt;color:#fff;cursor:pointer;box-shadow:0 10px 24px rgba(11,31,69,.25);transition:transform .25s var(--ease-out),box-shadow .25s,background .25s}
+.svc-note-more span{width:30px;height:30px;border-radius:50%;background:#f2c14e;color:#0b1f45;display:grid;place-items:center;font:700 18px/1 Prompt;transition:transform .3s var(--ease-out)}
+.svc-note-more:hover{background:#163a82;transform:translateY(-2px);box-shadow:0 0 0 3px rgba(242,193,78,.45),0 14px 30px rgba(11,31,69,.3)}
+.svc-note-more:hover span{transform:rotate(90deg)}
+.svc-note-more:focus-visible{outline:2px solid #1d4fd8;outline-offset:3px}
+
+/* Ad-budget policy modal (native <dialog>) */
+html:has(.policy-modal[open]){overflow:hidden}
+.policy-modal{width:min(640px,calc(100% - 32px));max-height:calc(100dvh - 48px);margin:auto;padding:0;border:0;border-radius:24px;background:#fff;color:#0b1f45;box-shadow:0 40px 80px rgba(11,31,69,.35);overflow:auto;overscroll-behavior:contain}
+.policy-modal::backdrop{background:rgba(11,31,69,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.policy-modal[open]{animation:policy-in .4s var(--ease-out)}
+.policy-modal[open]::backdrop{animation:policy-fade .3s ease-out}
+@keyframes policy-in{from{opacity:0;transform:translateY(24px) scale(.97)}}
+@keyframes policy-fade{from{opacity:0}}
+.policy-panel{position:relative;padding:34px 34px 28px}
+.policy-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;border:1px solid #e3e8f2;background:#fff;color:#0b1f45;display:grid;place-items:center;cursor:pointer;transition:background .2s,transform .3s var(--ease-out)}
+.policy-close:hover{background:#f5f7fb;transform:rotate(90deg)}
+.policy-close:focus-visible{outline:2px solid #1d4fd8;outline-offset:2px}
+.policy-title{padding-right:48px;font:700 24px/1.35 Prompt}
+.policy-highlight{position:relative;margin-top:18px;padding:18px 20px 18px 24px;border-radius:16px;background:#fffaf0;border:1px solid #f6e3b4;overflow:hidden}
+.policy-highlight::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#f2c14e}
+.policy-highlight b{font:600 17px Prompt}
+.policy-highlight p{margin-top:6px;font-size:14.5px;line-height:1.7;color:#5a6788}
+.policy-list{display:flex;flex-direction:column;gap:18px;margin:24px 0 0;padding:0;list-style:none}
+.policy-list li{display:flex;gap:14px;align-items:flex-start}
+.policy-icon{flex:none;width:44px;height:44px;border-radius:12px;background:#eaf0fe;color:#2563eb;display:grid;place-items:center}
+.policy-list b{font:600 16px/1.4 Prompt}
+.policy-list p{margin-top:4px;font-size:14.5px;line-height:1.7;color:#5a6788}
+.policy-note{margin-top:24px;padding-top:16px;border-top:1px dashed #e3e8f2;font-size:13px;line-height:1.65;color:#8a8f9e}
+.policy-note b{color:#5a6788;font-weight:600}
+@media (max-width:640px){
+  .policy-panel{padding:26px 20px 22px}
+  .policy-close{top:14px;right:14px}
+  .policy-title{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){
+  .policy-modal[open],.policy-modal[open]::backdrop{animation:none}
+}
+
 @media (max-width:1100px){
   .services-grid{grid-template-columns:1fr 1fr}
+  .svc-note{grid-template-columns:1fr;gap:20px}
 }
 /* Touch / narrower screens: no hover, so show the details up front */
 @media (max-width:1100px),(hover:none){
@@ -274,9 +326,57 @@ html.is-loading{overflow:hidden}
 @media (max-width:640px){
   .services{padding:72px 16px}
   .services-grid{grid-template-columns:1fr}
+  .svc-note{padding:24px 20px 24px 24px}
+  .svc-note-points{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   .services *,.services *::before{animation:none!important;transition:none!important}
+}
+
+/* ===== Pricing ===== */
+.pricing{padding:96px 32px;background:#f5f7fb;color:#0b1f45}
+.pricing-head{max-width:720px;margin:0 auto 48px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.pricing-eyebrow{display:flex;align-items:center;gap:10px;font:600 14px Prompt;color:#2563eb}
+.pricing-eyebrow::before{content:'';width:24px;height:2px;border-radius:2px;background:#f2c14e}
+.pricing-title{font:700 clamp(28px,3.2vw,40px)/1.3 Prompt;text-wrap:balance}
+.pricing-lead{font-size:15px;line-height:1.75;color:#5a6788}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:1040px;margin:0 auto}
+/* Card: navy offer on top, white "what you get" list below; subgrid keeps both cards' halves (and prices) aligned */
+.price-card{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:0;border-radius:24px;overflow:hidden;background:#fff;border:1px solid #e3e8f2;box-shadow:0 14px 36px rgba(11,31,69,.08);transition:transform .4s var(--ease-out),box-shadow .4s}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 26px 52px rgba(11,31,69,.16)}
+.price-top{display:flex;flex-direction:column;padding:32px 32px 26px;background:radial-gradient(120% 120% at 0% 0%,#163a82,#0b1f45 60%);color:#fff}
+.price-kicker{font:600 13px Prompt;letter-spacing:.4px;color:#f2c14e}
+.price-name{margin-top:8px;font:700 24px/1.35 Prompt}
+.price-desc{margin:8px 0 22px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.8)}
+.price-amount{display:flex;flex-direction:column;gap:4px;margin-top:auto;padding-top:22px;border-top:1px solid rgba(255,255,255,.14)}
+.price-from{font:500 14px Prompt;color:rgba(255,255,255,.75)}
+.price-value{font:800 clamp(32px,3.4vw,40px)/1.2 Prompt}
+.price-value small{font-size:.55em;font-weight:600}
+.price-excl{font-size:14px;color:rgba(255,255,255,.75)}
+.price-cta,.price-cta:hover{color:#0b1f45}
+.price-cta{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;padding:10px 10px 10px 24px;border-radius:999px;background:#f2c14e;font:700 16px Prompt;box-shadow:0 10px 26px rgba(242,193,78,.35);transition:transform .25s var(--ease-out),box-shadow .25s}
+.price-cta:hover{transform:translateY(-2px);box-shadow:0 0 0 3px rgba(242,193,78,.3),0 14px 32px rgba(242,193,78,.45)}
+.price-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.price-cta-arrow{width:32px;height:32px;border-radius:50%;background:#0b1f45;color:#f2c14e;display:grid;place-items:center;transition:transform .25s var(--ease-out)}
+.price-cta:hover .price-cta-arrow{transform:translateX(3px)}
+.price-cta-note{margin-top:12px;text-align:center;font-size:13px;color:rgba(255,255,255,.7)}
+.price-body{padding:28px 32px 32px}
+.price-body h4{margin:0 0 16px;font:600 17px Prompt}
+.price-list{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none;font-size:15px;line-height:1.6}
+.price-list li{display:flex;gap:12px;align-items:flex-start}
+.price-list svg{flex:none;margin-top:2px;color:#16a34a}
+.play .pricing-grid>.a-up:nth-child(1){animation-delay:.15s}
+.play .pricing-grid>.a-up:nth-child(2){animation-delay:.27s}
+@media (max-width:860px){
+  .pricing-grid{grid-template-columns:1fr;max-width:560px}
+}
+@media (max-width:640px){
+  .pricing{padding:72px 16px}
+  .price-top{padding:26px 22px 22px}
+  .price-body{padding:24px 22px 26px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pricing *{animation:none!important;transition:none!important}
 }
 
 /* ===== Why ===== */
@@ -323,8 +423,15 @@ html.is-loading{overflow:hidden}
 .consult-eyebrow{display:flex;align-items:center;gap:10px;font:600 14px Prompt;color:#2563eb}
 .consult-eyebrow::before{content:'';width:24px;height:2px;border-radius:2px;background:#f2c14e}
 .consult-title{font:700 clamp(26px,3vw,38px)/1.45 Prompt;text-wrap:balance}
-.consult-title mark{color:#1d4fd8;padding:0 .14em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(#f2c14e,#f2c14e) 0 30%/100% 94% no-repeat}
 .consult-text{max-width:640px;font-size:16px;line-height:1.8;color:#5a6788;text-wrap:pretty}
+/* Agenda card: what the first meeting covers */
+.consult-agenda{width:100%;margin-top:8px;padding:28px;border-radius:22px;background:#f5f7fb;border:1px solid #e3e8f2;text-align:left}
+.consult-agenda-title{margin-bottom:18px;font:600 18px Prompt;text-align:center}
+.consult-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0;padding:0;list-style:none}
+.consult-list li{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid #e3e8f2;font-size:15px;line-height:1.55}
+.consult-list li:last-child{grid-column:1/-1}
+.consult-icon{flex:none;width:40px;height:40px;border-radius:12px;background:#eaf0fe;color:#2563eb;display:grid;place-items:center}
+.consult-note{max-width:640px;font-size:13px;line-height:1.65;color:#8a8f9e;text-wrap:pretty}
 .consult-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px}
 .consult-btn,.consult-btn:hover{color:#fff}
 .consult-btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:700 15px Prompt;white-space:nowrap;transition:transform .25s var(--ease-out),background .25s,box-shadow .25s}
@@ -338,11 +445,14 @@ html.is-loading{overflow:hidden}
 .play .consult-inner>.a-up:nth-child(2){animation-delay:.1s}
 .play .consult-inner>.a-up:nth-child(3){animation-delay:.2s}
 .play .consult-inner>.a-up:nth-child(4){animation-delay:.3s}
-/* Highlight sweeps in after the title lands; text goes navy → blue on the white background */
-.play .consult-title mark{animation:consult-mark .8s var(--ease-out) .6s both}
-@keyframes consult-mark{from{background-size:0% 94%;color:#0b1f45}}
+.play .consult-inner>.a-up:nth-child(5){animation-delay:.4s}
+.play .consult-inner>.a-up:nth-child(6){animation-delay:.5s}
+/* Brush underline draws in after the title lands */
+.play .consult-title .mark-line path{animation:mark-draw .9s var(--ease-out) .6s both}
 @media (max-width:640px){
   .consult{padding:72px 16px}
+  .consult-agenda{padding:22px 16px}
+  .consult-list{grid-template-columns:1fr}
   .consult-actions{flex-direction:column;align-items:stretch;width:100%}
   .consult-btn{justify-content:center}
 }
@@ -488,6 +598,36 @@ html.is-loading{overflow:hidden}
   .process *,.process *::before,.process *::after,.timeline::after{animation:none!important}
 }
 
+/* ===== About / Partner (after Process) ===== */
+.about{padding:96px 32px;background:#f5f7fb;color:#0b1f45}
+.about-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.about-copy{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.about-brand{display:flex;align-items:center;gap:12px;font:800 clamp(30px,3.4vw,42px)/1.1 Prompt;letter-spacing:1px;color:#0b1f45}
+.about-logo{width:52px;height:52px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(11,31,69,.1)}
+.about-title{font:600 clamp(20px,2vw,24px)/1.4 Prompt}
+.about-tagline{display:flex;align-items:center;gap:10px;font:500 16px Prompt;color:#2563eb}
+.about-tagline::before{content:'';width:24px;height:2px;border-radius:2px;background:#f2c14e}
+.about-text{max-width:560px;font-size:16px;line-height:1.8;color:#5a6788}
+/* Meeting card: cream with gold left edge, same family as the services note */
+.about-meet{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:32px 32px 28px 36px;border-radius:22px;background:#fffaf0;border:1px solid #f6e3b4;box-shadow:0 14px 36px rgba(11,31,69,.06);overflow:hidden}
+.about-meet::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#f2c14e}
+.about-meet-icon{width:52px;height:52px;border-radius:14px;background:#f2c14e;color:#0b1f45;display:grid;place-items:center;transform:rotate(-6deg)}
+.about-meet-title{margin-top:4px;font:700 22px/1.4 Prompt}
+.about-meet-text{font-size:15px;line-height:1.75;color:#5a6788}
+.about-meet .cta-gold{margin-top:6px}
+.about-meet-note{padding-top:14px;border-top:1px dashed #ecd9a6;font-size:13px;line-height:1.6;color:#8a8f9e}
+.play .about-inner>.a-up:nth-child(2){animation-delay:.15s}
+@media (max-width:900px){
+  .about-inner{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:640px){
+  .about{padding:72px 16px}
+  .about-meet{padding:26px 20px 22px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .about *{animation:none!important;transition:none!important}
+}
+
 /* ===== Contact ===== */
 /* bg-contact.webp: people on the left; the overlay builds up behind the copy on the right.
    The section is ~520px tall, close to the photo's own 386px, so "cover" barely upscales it */
@@ -499,7 +639,6 @@ html.is-loading{overflow:hidden}
 .contact-title{display:flex;flex-direction:column;font:700 clamp(28px,3.2vw,42px)/1.3 Prompt}
 .contact-title .row{display:block}
 /* Gold highlight with blue text on the key phrase, same as the hero */
-.contact-title mark{color:#1d4fd8;padding:0 .14em;margin:0 .1em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(#f2c14e,#f2c14e) 0 30%/100% 94% no-repeat}
 .contact-lead{max-width:540px;font-size:15.5px;line-height:1.75;color:rgba(255,255,255,.8)}
 
 .contact-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
@@ -530,15 +669,14 @@ html.is-loading{overflow:hidden}
 .contact-status.is-closed::before{background:rgba(255,255,255,.5)}
 @keyframes contact-blink{50%{box-shadow:0 0 0 5px rgba(74,222,128,.25)}}
 
-/* Entrance: lines slide in, then the highlight sweeps across "ชัดเจนขึ้น" */
+/* Entrance: lines slide in, then the brush underline draws under "ชัดเจนขึ้น" */
 .play .a-slide{animation:contact-slide .9s var(--ease-out) both}
 .play .contact-title .row:nth-child(2){animation-delay:.12s}
-.play .contact-title mark{animation:contact-mark .9s var(--ease-out) .7s both}
+.play .contact-title .mark-line path{animation:mark-draw .9s var(--ease-out) .7s both}
 .play .contact-lead{animation-delay:.25s}
 .play .contact-btns{animation-delay:.38s}
 .play .contact-hours{animation-delay:.5s}
 @keyframes contact-slide{from{opacity:0;transform:translateX(-40px)}}
-@keyframes contact-mark{from{background-size:0% 94%;color:#fff}}
 
 /* Stacked: photo band on top, copy on solid navy below */
 @media (max-width:900px){
