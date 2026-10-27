@@ -67,3 +67,22 @@ node_modules/
 
 previews
 req
+
+# macOS
+.DS_Store
+
+# Dev-only / unused files (not part of the live site)
+breif/
+designs/
+mockup/
+support.js
+demo-*.html
+grow-vance.web.app-*.json
+
+# Unused images (source PNGs + images not referenced by the site)
+assets/img/bg-*.png
+assets/img/bg-contact.webp
+assets/img/LOGO-640x640.jpg
+assets/img/icon-4.png
+assets/img/project-team-collaborating-business-analytics.jpg
+assets/img/creative-agency-business-brain-storm-meeting-presentation-team-discussing-roadmap-product-launch-presentation-planning-strategy-new-business-development.jpg
