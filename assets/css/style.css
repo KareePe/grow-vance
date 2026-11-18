@@ -899,3 +899,11 @@ html:has(.policy-modal[open]){overflow:hidden}
 /* Skip style/layout for sections until they near the viewport (Thai text layout is costly on mobile).
    The footer is excluded: its CTA banner overflows upward and paint containment would clip it. */
 .services,.why,.consult,.work,.process,.contact,.testimonials{content-visibility:auto;contain-intrinsic-size:auto 900px}
+
+/* LINE-green CTA: header, mobile menu, process */
+.header-cta,.header-cta:hover,.mobile-cta,.mobile-cta:hover,.process-cta .cta-gold,.process-cta .cta-gold:hover{color:#fff}
+.header-cta,.mobile-cta{background:#06c755}
+.header-cta:hover,.mobile-cta:hover{background:#05b34c}
+.process-cta .cta-gold{background:#06c755;box-shadow:0 10px 26px rgba(6,199,85,.4)}
+.process-cta .cta-gold:hover{box-shadow:0 0 0 3px rgba(6,199,85,.3),0 14px 32px rgba(6,199,85,.5)}
+.process-cta .cta-gold-arrow{background:#fff;color:#06c755}
